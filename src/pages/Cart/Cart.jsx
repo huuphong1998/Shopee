@@ -1,12 +1,14 @@
 import { createNextState, unwrapResult } from '@reduxjs/toolkit'
 import CheckBox from 'components/CheckBox/CheckBox'
 import ProductQuantityController from 'components/ProductQuantityController/ProductQuantityController'
+import CartSkeleton from 'components/Skeleton/CartSkeleton'
+import { path } from 'constants/path'
 import keyBy from 'lodash/keyBy'
 import { useSnackbar } from 'notistack'
 import React, { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { useDispatch, useSelector } from 'react-redux'
-import { formatMoney } from 'utils/helper'
+import { formatMoney, generateNameId } from 'utils/helper'
 import { buyPurchases, deletePurchases, getCartPurchases, updatePurchase } from './cart.slice'
 import * as S from './cart.style'
 
@@ -21,6 +23,7 @@ export default function Cart() {
             })
         })
     )
+    const [loading, setLoading] = useState(true)
     const dispatch = useDispatch()
     const isCheckedAll = localPurchases.every(purchase => purchase.checked)
     const checkedPurchases = localPurchases.filter(purchase => purchase.checked)
@@ -42,7 +45,9 @@ export default function Cart() {
                 })
             })
         })
+        setLoading(false)
     }, [purchases])
+    console.log(loading)
 
     const handleInputQuantity = indexPurchase => value => {
         const newLocalPurchases = createNextState(localPurchases, draft => {
@@ -156,42 +161,51 @@ export default function Cart() {
                     <S.ProductHeaderAction>Thao tác</S.ProductHeaderAction>
                 </S.ProductHeader>
                 <S.ProductSection>
-                    {localPurchases.map((purchase, index) => (
-                        <S.CartItem key={purchase._id}>
-                            <S.CartItemCheckbox>
-                                <CheckBox checked={purchase.checked} onChange={handleCheck(index)} />
-                            </S.CartItemCheckbox>
-                            <S.CartItemOverview>
-                                <S.CartItemOverviewImage to="">
-                                    <img src={purchase.product.image} alt="" />
-                                </S.CartItemOverviewImage>
-                                <S.CartItemOverviewNameWrapper>
-                                    <S.CartItemOverviewName to="">{purchase.product.name}</S.CartItemOverviewName>
-                                </S.CartItemOverviewNameWrapper>
-                            </S.CartItemOverview>
-                            <S.CartItemUnitPrice>
-                                <span>{formatMoney(purchase.product.price_before_discount)}</span>
-                                <span>{formatMoney(purchase.product.price)}</span>
-                            </S.CartItemUnitPrice>
-                            <S.CartItemQuantity>
-                                <ProductQuantityController
-                                    max={purchase.product.quantity}
-                                    value={purchase.buy_count}
-                                    disabled={purchase.disabled}
-                                    onInput={handleInputQuantity(index)}
-                                    onBlur={handleBlurQuantity(index)}
-                                    onIncrease={handleIncreaseAndDecrease(index)}
-                                    onDecrease={handleIncreaseAndDecrease(index)}
-                                />
-                            </S.CartItemQuantity>
-                            <S.CartItemTotalPrice>
-                                <span>{formatMoney(purchase.product.price * purchase.buy_count)}</span>
-                            </S.CartItemTotalPrice>
-                            <S.CartItemAction>
-                                <S.CartItemActionButton onClick={handleRemove(index)}>Xóa</S.CartItemActionButton>
-                            </S.CartItemAction>
-                        </S.CartItem>
-                    ))}
+                    {loading ? (
+                        <CartSkeleton />
+                    ) : (
+                        localPurchases &&
+                        localPurchases.map((purchase, index) => (
+                            <S.CartItem key={purchase._id}>
+                                <S.CartItemCheckbox>
+                                    <CheckBox checked={purchase.checked} onChange={handleCheck(index)} />
+                                </S.CartItemCheckbox>
+                                <S.CartItemOverview>
+                                    <S.CartItemOverviewImage to={path.product + `/${generateNameId(purchase.product)}`}>
+                                        <img src={purchase.product.image} alt={purchase.product.name} />
+                                    </S.CartItemOverviewImage>
+                                    <S.CartItemOverviewNameWrapper>
+                                        <S.CartItemOverviewName
+                                            to={path.product + `/${generateNameId(purchase.product)}`}
+                                        >
+                                            {purchase.product.name}
+                                        </S.CartItemOverviewName>
+                                    </S.CartItemOverviewNameWrapper>
+                                </S.CartItemOverview>
+                                <S.CartItemUnitPrice>
+                                    <span>{formatMoney(purchase.product.price_before_discount)}</span>
+                                    <span>{formatMoney(purchase.product.price)}</span>
+                                </S.CartItemUnitPrice>
+                                <S.CartItemQuantity>
+                                    <ProductQuantityController
+                                        max={purchase.product.quantity}
+                                        value={purchase.buy_count}
+                                        disabled={purchase.disabled}
+                                        onInput={handleInputQuantity(index)}
+                                        onBlur={handleBlurQuantity(index)}
+                                        onIncrease={handleIncreaseAndDecrease(index)}
+                                        onDecrease={handleIncreaseAndDecrease(index)}
+                                    />
+                                </S.CartItemQuantity>
+                                <S.CartItemTotalPrice>
+                                    <span>{formatMoney(purchase.product.price * purchase.buy_count)}</span>
+                                </S.CartItemTotalPrice>
+                                <S.CartItemAction>
+                                    <S.CartItemActionButton onClick={handleRemove(index)}>Xóa</S.CartItemActionButton>
+                                </S.CartItemAction>
+                            </S.CartItem>
+                        ))
+                    )}
                 </S.ProductSection>
             </div>
             <S.CartFooter>

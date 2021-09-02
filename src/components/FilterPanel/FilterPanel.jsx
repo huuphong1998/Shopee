@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import queryString from 'query-string'
 import React, { useEffect } from 'react'
 import { Controller, useForm } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
 import { NavLink, useHistory } from 'react-router-dom'
 import RatingStars from '../RatingStars/RatingStars'
 import * as S from './filterPanel.style'
@@ -73,6 +74,8 @@ export default function FilterPanel({ categories, filters, loading }) {
         })
     }
 
+    const { t } = useTranslation()
+
     return (
         <div>
             <S.CategoryTitleLink to={path.home}>
@@ -89,7 +92,7 @@ export default function FilterPanel({ categories, filters, loading }) {
                         </g>
                     </g>
                 </svg>
-                Tất cả danh mục
+                {t('filterPanel.category')}
             </S.CategoryTitleLink>
             <S.CategoryList>
                 {categories.map(category => (
@@ -120,10 +123,10 @@ export default function FilterPanel({ categories, filters, loading }) {
                         />
                     </g>
                 </svg>
-                Bộ lọc tìm kiếm
+                {t('filterPanel.filter')}
             </S.CategoryTitle>
             <S.FilterGroup>
-                <S.FilterGroupHeader>Khoảng giá</S.FilterGroupHeader>
+                <S.FilterGroupHeader>{t('filterPanel.price')}</S.FilterGroupHeader>
                 <S.PriceRange>
                     <S.PriceRangeGroup>
                         <Controller
@@ -132,7 +135,7 @@ export default function FilterPanel({ categories, filters, loading }) {
                             rules={{ validate: { validPrice } }}
                             render={({ field: { onChange } }) => (
                                 <S.PriceRangeInput
-                                    placeholder="₫ Từ"
+                                    placeholder={`₫ ${t('filterPanel.from')}`}
                                     onChange={value => {
                                         clearErrors()
                                         onChange(value)
@@ -148,7 +151,7 @@ export default function FilterPanel({ categories, filters, loading }) {
                             rules={{ validate: { validPrice } }}
                             render={({ field: { onChange } }) => (
                                 <S.PriceRangeInput
-                                    placeholder="₫ Đến"
+                                    placeholder={`₫ ${t('filterPanel.to')}`}
                                     onChange={value => {
                                         clearErrors()
                                         onChange(value)
@@ -159,16 +162,18 @@ export default function FilterPanel({ categories, filters, loading }) {
                         />
                     </S.PriceRangeGroup>
                     {Object.values(errors).length !== 0 && (
-                        <S.PriceErrorMessage>Vui lòng điền khoảng giá phù hợp</S.PriceErrorMessage>
+                        <S.PriceErrorMessage>{t('filterPanel.errorMessage')}</S.PriceErrorMessage>
                     )}
-                    <S.PriceRangeButton onClick={handleSubmit(searchPrice)}>ÁP dụng</S.PriceRangeButton>
+                    <S.PriceRangeButton onClick={handleSubmit(searchPrice)}>
+                        {t('filterPanel.apply')}
+                    </S.PriceRangeButton>
                 </S.PriceRange>
             </S.FilterGroup>
             <S.FilterGroup>
-                <S.FilterGroupHeader>Đánh giá</S.FilterGroupHeader>
+                <S.FilterGroupHeader>{t('filterPanel.rating')}</S.FilterGroupHeader>
                 <RatingStars filters={filters} />
             </S.FilterGroup>
-            <S.RemoveFilterButton onClick={clearAll}>Xóa tất cả</S.RemoveFilterButton>
+            <S.RemoveFilterButton onClick={clearAll}>{t('filterPanel.removeAll')}</S.RemoveFilterButton>
         </div>
     )
 }

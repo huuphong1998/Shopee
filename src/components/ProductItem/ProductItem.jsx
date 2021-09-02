@@ -1,16 +1,19 @@
+import { path } from 'constants/path'
+import PropTypes from 'prop-types'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
+import { formatK, formatMoney, generateNameId } from 'utils/helper'
 import ProductRating from '../ProductRating/ProductRating'
 import * as S from './productItem.style'
-import PropTypes from 'prop-types'
-import { generateNameId, formatMoney, formatK } from 'utils/helper'
-import { path } from 'constants/path'
 
 ProductItem.propTypes = {
     product: PropTypes.object
 }
 
 export default function ProductItem({ product }) {
+    const { t } = useTranslation()
+
     return (
         <S.Product>
             <Link to={path.product + `/${generateNameId(product)}`}>
@@ -30,7 +33,7 @@ export default function ProductItem({ product }) {
                             <ProductRating rating={product.rating} />
                             <S.ProductItemSold>
                                 <span>{formatK(product.sold)}</span>
-                                <span>Đã bán</span>
+                                <span>{t('searchItemResult.sold')}</span>
                             </S.ProductItemSold>
                         </S.ProductItemMeta>
                     </S.ProductItemInfo>

@@ -9,6 +9,7 @@ function ProductSkeletonList({ length }) {
             {Array.from(new Array(length)).map((x, index) => (
                 <S.SkeletonItem key={index}>
                     <S.SkeletonRect>
+                        <Skeleton variant="rect" width="100%" height="100%" />
                         <S.SkeletonImage></S.SkeletonImage>
                     </S.SkeletonRect>
                     <S.SkeletonText>

@@ -1,9 +1,12 @@
+import PropTypes from 'prop-types'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import * as H from './headerRegister.style'
-import PropTypes from 'prop-types'
 
 export default function HeaderRegister({ title }) {
+    const { t } = useTranslation()
+
     return (
         <H.Header>
             <H.Container className="container">
@@ -37,7 +40,7 @@ export default function HeaderRegister({ title }) {
                     <H.HeaderTitle>{title}</H.HeaderTitle>
                 </H.HeaderBrand>
                 <Link to="" className="link">
-                    Cần trợ giúp?
+                    {t('headerRegister.needHelp')}
                 </Link>
             </H.Container>
         </H.Header>

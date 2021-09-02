@@ -1,5 +1,69 @@
 {
+    "routes": {
+        "titleLogin": "Log In",
+        "titleRegiter": "Sign Up"
+    },
     "footer": {
-        "language": "Language"
+        "language": "Language",
+        "copyright": "© 2021 MyShop. All rights reserved.",
+        "nameCompany": "MyShop Co., Ltd",
+        "addressAndEmail": "Address: Level 4-5-6, Hanoi International Center Building, 55 Lieu Giai Street, Ngoc Ward Khanh, Ba Dinh District, Hanoi City, Vietnam. Support call center: 1900143221 - Email:cskh@hotro.MyShop.vn",
+        "contact": "Responsible for Content Management: Nguyen Duc Tri - Contact phone: 024 73081221 (ext 4678)",
+        "businessCode": "Enterprise code: 0106772343786 first issued by Hanoi Department of Planning and Investment on February 10, 2015",
+        "license": "© 2015 - Copyright belongs to MyShop Co., Ltd"
+    },
+    "navBar": {
+        "account": "My account",
+        "purchase": "My Purchase",
+        "logout": "Logout",
+        "register": "Sign Up",
+        "login": "Login"
+    },
+    "filterPanel": {
+        "category": "All Categories",
+        "filter": "Search Filter",
+        "price": "Price Range",
+        "errorMessage": "Please input valid price range",
+        "from": "Min",
+        "to": "Max",
+        "apply": "Apply",
+        "rating": "Rating",
+        "up": "& Up",
+        "removeAll": "Clear All"
+    },
+    "searchItemResult": {
+        "sortBy": "Sort by",
+        "popular": "Popular",
+        "latest": "Latest",
+        "topSales": "Top Sales",
+        "price": "Price",
+        "lowToHigh": "Price: Low to High",
+        "highToLow": "Price: High to Low",
+        "sold": "Sold"
+    },
+    "header": {
+        "search": "Search for products, brands and shops",
+        "addProducts": "Recently Added Products",
+        "moreProducts": "More Products In Cart",
+        "viewCart": "View My Shopping Cart"
+    },
+    "headerRegister": {
+        "needHelp": "Need help?"
+    },
+    "login": {
+        "login": "Log In",
+        "password": "Password",
+        "loginSubmit": "Log In",
+        "newToMyShop": "New to MyShop?",
+        "register": "Sign Up"
+    },
+    "register": {
+        "register": "Sign Up",
+        "password": "Password",
+        "cofirmedPassword": "Cofirmed Password",
+        "errorPassword": "Password does not match",
+        "registerSubmit": "Sign Up",
+        "haveAccount": "Have an account?",
+        "login": "Log In"
     }
 }

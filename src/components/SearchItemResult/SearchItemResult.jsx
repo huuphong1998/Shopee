@@ -3,6 +3,7 @@ import { path } from 'constants/path'
 import PropTypes from 'prop-types'
 import queryString from 'query-string'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { useHistory } from 'react-router-dom'
 import Pagination from '../Pagination/Pagination'
 import ProductItem from '../ProductItem/ProductItem'
@@ -55,22 +56,24 @@ export default function SearchItemResult({ productList, filters, loading }) {
         }
     }
 
+    const { t } = useTranslation()
+
     return (
         <div>
             <S.SortBar>
-                <S.SortBarLabel>Sắp xếp theo</S.SortBarLabel>
+                <S.SortBarLabel>{t('searchItemResult.sortBy')}</S.SortBarLabel>
                 <S.SortByOptions>
                     <S.SortByOptionsOption onClick={() => sortBy('view')} className={handleActiveOptionSort('view')}>
-                        Phổ biến
+                        {t('searchItemResult.popular')}
                     </S.SortByOptionsOption>
                     <S.SortByOptionsOption
                         onClick={() => sortBy('createdAt')}
                         className={handleActiveOptionSort('createdAt')}
                     >
-                        Mới nhất
+                        {t('searchItemResult.latest')}
                     </S.SortByOptionsOption>
                     <S.SortByOptionsOption onClick={() => sortBy('sold')} className={handleActiveOptionSort('sold')}>
-                        Bán chạy
+                        {t('searchItemResult.topSales')}
                     </S.SortByOptionsOption>
                     <S.SortByPrice
                         onChange={event => sortBy(...event.target.value.split(':'))}
@@ -78,10 +81,10 @@ export default function SearchItemResult({ productList, filters, loading }) {
                         value={handleSortByPriceValue()}
                     >
                         <option disabled value="">
-                            Giá
+                            {t('searchItemResult.price')}
                         </option>
-                        <option value="price:asc">Giá: Thấp đến cao</option>
-                        <option value="price:desc">Giá: Cao đến thấp</option>
+                        <option value="price:asc">{t('searchItemResult.lowToHigh')}</option>
+                        <option value="price:desc">{t('searchItemResult.highToLow')}</option>
                     </S.SortByPrice>
                 </S.SortByOptions>
                 <S.MiniPageController>

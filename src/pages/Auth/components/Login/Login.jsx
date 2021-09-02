@@ -10,6 +10,7 @@ import { login } from 'pages/Auth/userSlice'
 import React from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Controller, useForm } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
 import { useDispatch } from 'react-redux'
 import { Link, useHistory } from 'react-router-dom'
 import * as S from '../Register/register.style'
@@ -53,6 +54,7 @@ export default function Login() {
             }
         }
     }
+    const { t } = useTranslation()
 
     return (
         <S.StyledRegister>
@@ -62,7 +64,7 @@ export default function Login() {
             <S.Banner>
                 <S.FormWrapper>
                     {isSubmitting && <LinearProgress />}
-                    <S.FormTitle>Đăng nhập</S.FormTitle>
+                    <S.FormTitle>{t('login.login')}</S.FormTitle>
                     <S.Form onSubmit={handleSubmit(handleSubmitRegister)} noValidate>
                         <S.FormControl>
                             <Controller
@@ -89,7 +91,7 @@ export default function Login() {
                                 render={({ field: { onChange } }) => (
                                     <InputPassword
                                         name="password"
-                                        placeholder="Mật khẩu"
+                                        placeholder={t('login.password')}
                                         onChange={onChange}
                                         value={getValues('password')}
                                     />
@@ -100,14 +102,14 @@ export default function Login() {
 
                         <S.FormButton>
                             <Button type="submit" disabled={isSubmitting}>
-                                Đăng nhập
+                                {t('login.loginSubmit')}
                             </Button>
                         </S.FormButton>
                     </S.Form>
                     <S.FormFooter>
-                        <span>Bạn mới biết đến MyShop?</span>
+                        <span>{t('login.newToMyShop')}</span>
                         <Link to={path.register} className="link">
-                            Đăng ký
+                            {t('login.register')}
                         </Link>
                     </S.FormFooter>
                 </S.FormWrapper>

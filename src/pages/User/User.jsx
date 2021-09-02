@@ -5,8 +5,22 @@ import Password from 'pages/User/Password/Password'
 import Profile from 'pages/User/Profile/Profile'
 import Purchase from 'pages/User/Purchase/Purchase'
 import * as S from './user.style'
+import { useSelector } from 'react-redux'
 
 export default function User() {
+    const profile = useSelector(state => state.user.profile)
+
+    const userName = name => {
+        const nameArray = name.split(' ')
+        for (let i = 0; i < nameArray.length; i++) {
+            if (nameArray.length > 2) {
+                nameArray.splice(0, 1)
+                return nameArray.join(' ')
+            }
+        }
+        return name
+    }
+
     return (
         <div>
             <S.Container className="container">
@@ -19,7 +33,7 @@ export default function User() {
                             />
                         </S.BriefAvatar>
                         <S.BriefRight>
-                            <S.BriefUsername>Huu Phong</S.BriefUsername>
+                            <S.BriefUsername>{userName(profile.name)}</S.BriefUsername>
                             <S.BriefEdit to={path.profile}>
                                 <svg
                                     width={12}

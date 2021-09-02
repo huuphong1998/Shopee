@@ -1,4 +1,5 @@
 import { unwrapResult } from '@reduxjs/toolkit'
+import PurchaseSkeleton from 'components/Skeleton/PurchaseSkeleton'
 import { path } from 'constants/path'
 import { purchaseStatus } from 'constants/status'
 import useQuery from 'hooks/useQuery'
@@ -12,14 +13,17 @@ import * as S from './purchase.style'
 
 export default function Purchase() {
     const [purchases, setPurchases] = useState([])
+    const [loading, setLoading] = useState(true)
     const dispatch = useDispatch()
     const query = useQuery()
     const status = useMemo(() => query.status || purchaseStatus.all, [query])
     useEffect(() => {
+        setLoading(true)
         dispatch(getPurchases(status))
             .then(unwrapResult)
             .then(res => {
                 setPurchases(res.data)
+                setLoading(false)
             })
     }, [status, dispatch])
 
@@ -81,31 +85,36 @@ export default function Purchase() {
                 </S.PurchaseTabItem>
             </S.PurchaseTabs>
             <S.PurchaseList>
-                {purchases.map(purchase => (
-                    <S.OrderCard key={purchase._id}>
-                        <S.OrderCardContent>
-                            <S.OrderCardDetail>
-                                <img src={purchase.product.image} alt="" />
-                                <S.OrderContent>
-                                    <S.OrderName>{purchase.product.name}</S.OrderName>
-                                    <S.OrderQuantity>{purchase.product.buy_count}</S.OrderQuantity>
-                                </S.OrderContent>
-                            </S.OrderCardDetail>
-                            <S.OrderCardPrice>{formatMoney(purchase.product.price)}</S.OrderCardPrice>
-                        </S.OrderCardContent>
-                        <S.OrderCardButtonsContainer>
-                            <S.PurchaseButton to={path.product + `/${generateNameId(purchase.product)}`} light={1}>
-                                Xem sản phẩm
-                            </S.PurchaseButton>
-                            <S.TotalPrice>
-                                <S.TotalPriceLabel>Tổng giá tiền</S.TotalPriceLabel>
-                                <S.TotalPricePrice>
-                                    {formatMoney(purchase.product.price * purchase.buy_count)}
-                                </S.TotalPricePrice>
-                            </S.TotalPrice>
-                        </S.OrderCardButtonsContainer>
-                    </S.OrderCard>
-                ))}
+                {loading ? (
+                    <PurchaseSkeleton />
+                ) : (
+                    purchases &&
+                    purchases.map(purchase => (
+                        <S.OrderCard key={purchase._id}>
+                            <S.OrderCardContent>
+                                <S.OrderCardDetail>
+                                    <img src={purchase.product.image} alt="" />
+                                    <S.OrderContent>
+                                        <S.OrderName>{purchase.product.name}</S.OrderName>
+                                        <S.OrderQuantity>{purchase.product.buy_count}</S.OrderQuantity>
+                                    </S.OrderContent>
+                                </S.OrderCardDetail>
+                                <S.OrderCardPrice>{formatMoney(purchase.product.price)}</S.OrderCardPrice>
+                            </S.OrderCardContent>
+                            <S.OrderCardButtonsContainer>
+                                <S.PurchaseButton to={path.product + `/${generateNameId(purchase.product)}`} light={1}>
+                                    Xem sản phẩm
+                                </S.PurchaseButton>
+                                <S.TotalPrice>
+                                    <S.TotalPriceLabel>Tổng giá tiền</S.TotalPriceLabel>
+                                    <S.TotalPricePrice>
+                                        {formatMoney(purchase.product.price * purchase.buy_count)}
+                                    </S.TotalPricePrice>
+                                </S.TotalPrice>
+                            </S.OrderCardButtonsContainer>
+                        </S.OrderCard>
+                    ))
+                )}
             </S.PurchaseList>
         </div>
     )

@@ -10,6 +10,7 @@ import { register } from 'pages/Auth/userSlice'
 import React from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Controller, useForm } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
 import { useDispatch } from 'react-redux'
 import { Link, useHistory } from 'react-router-dom'
 import * as S from './register.style'
@@ -54,6 +55,7 @@ export default function Register() {
             }
         }
     }
+    const { t } = useTranslation()
 
     return (
         <S.StyledRegister>
@@ -63,7 +65,7 @@ export default function Register() {
             <S.Banner>
                 <S.FormWrapper>
                     {isSubmitting && <LinearProgress />}
-                    <S.FormTitle>Đăng ký</S.FormTitle>
+                    <S.FormTitle>{t('register.register')}</S.FormTitle>
                     <S.Form onSubmit={handleSubmit(handleSubmitRegister)} noValidate>
                         <S.FormControl>
                             <Controller
@@ -90,7 +92,7 @@ export default function Register() {
                                 render={({ field: { onChange } }) => (
                                     <InputPassword
                                         name="password"
-                                        placeholder="Mật khẩu"
+                                        placeholder={t('register.password')}
                                         onChange={onChange}
                                         value={getValues('password')}
                                     />
@@ -105,13 +107,14 @@ export default function Register() {
                                 rules={{
                                     ...rules.confirmedPassword,
                                     validate: {
-                                        samePassword: v => v === getValues('password') || 'Mật khẩu không khớp'
+                                        samePassword: v =>
+                                            v === getValues('password') || `${t('register.errorPassword')}`
                                     }
                                 }}
                                 render={({ field: { onChange } }) => (
                                     <InputPassword
                                         name="confirmedPassword"
-                                        placeholder="Nhập lại mật khẩu"
+                                        placeholder={t('register.cofirmedPassword')}
                                         onChange={onChange}
                                         value={getValues('confirmedPassword')}
                                     />
@@ -121,14 +124,14 @@ export default function Register() {
                         </S.FormControl>
                         <S.FormButton>
                             <Button type="submit" disabled={isSubmitting}>
-                                Đăng ký
+                                {t('register.registerSubmit')}
                             </Button>
                         </S.FormButton>
                     </S.Form>
                     <S.FormFooter>
-                        <span>Bạn đã có tài khoản?</span>
+                        <span>{t('register.haveAccount')}</span>
                         <Link to={path.login} className="link">
-                            Đăng nhập
+                            {t('register.login')}
                         </Link>
                     </S.FormFooter>
                 </S.FormWrapper>

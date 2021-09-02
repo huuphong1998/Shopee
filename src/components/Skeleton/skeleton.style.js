@@ -1,10 +1,5 @@
 import styled from 'styled-components'
 
-// export const SkeletonList = styled.div`
-//     display: flex;
-//     flex-wrap: wrap;
-// `
-
 export const Skeletons = styled.div`
     display: flex;
     padding: 0 5px;
@@ -25,7 +20,8 @@ export const SkeletonRect = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #d7cfcf;
+    background: #e8e2e2;
+    position: relative;
 `
 
 export const SkeletonImage = styled.div`
@@ -37,6 +33,7 @@ export const SkeletonImage = styled.div`
     background-position: 50%;
     background-size: contain;
     background-repeat: no-repeat;
+    position: absolute;
 `
 
 export const SkeletonText = styled.div``

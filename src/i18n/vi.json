@@ -1,5 +1,75 @@
 {
+    "routes": {
+        "titleLogin": "Đăng nhập",
+        "titleRegiter": "Đăng ký"
+    },
     "footer": {
-        "language": "Ngôn ngữ"
+        "language": "Ngôn ngữ",
+        "copyright": "© 2021 MyShop. Tất cả các quyền được bảo lưu.",
+        "nameCompany": "Công ty TNHH MyShop",
+        "addressAndEmail": "Địa chỉ: Tầng 4-5-6, Tòa nhà trung tâm International Hà Nội, số 55 đường Liễu Giai, Phường NgọcKhánh, Quận Ba Đình, Thành phố Hà Nội, Việt Nam. Tổng đài hỗ trợ: 1900143221 - Email:cskh@hotro.MyShop.vn",
+        "contact": "Chịu Trách Nhiệm Quản Lý Nội Dung: Nguyễn Đức Trí - Điện thoại liên hệ: 024 73081221 (ext 4678)",
+        "businessCode": "Mã số doanh nghiệp: 0106772343786 do Sở Kế hoạch & Đầu tư TP Hà Nội cấp lần đầu ngày 10/02/2015",
+        "license": "© 2015 - Bản quyền thuộc về Công ty TNHH MyShop"
+    },
+    "navBar": {
+        "account": "Tài khoản của tôi",
+        "purchase": "Đơn mua",
+        "logout": "Đăng xuất",
+        "register": "Đăng ký",
+        "login": "Đăng nhập"
+    },
+    "filterPanel": {
+        "category": "Tất cả danh mục",
+        "filter": "Bộ lọc tìm kiếm",
+        "price": "Khoảng giá",
+        "errorMessage": "Vui lòng điền khoảng giá phù hợp",
+        "from": "Từ",
+        "to": "Đến",
+        "apply": "Áp dụng",
+        "rating": "Đánh giá",
+        "up": "trở lên",
+        "removeAll": "Xóa tất cả"
+    },
+    "searchItemResult": {
+        "sortBy": "Sắp xếp theo",
+        "popular": "Phổ biến",
+        "latest": "Mới nhất",
+        "topSales": "Bán chạy",
+        "price": "Giá",
+        "lowToHigh": "Giá: Thấp đến cao",
+        "highToLow": "Giá: Cao đến thấp",
+        "sold": "Đã bán"
+    },
+    "header": {
+        "search": "Tìm kiếm sản phẩm",
+        "addProducts": "Sản phẩm mới thêm",
+        "moreProducts": "sản phẩm vào giỏ",
+        "viewCart": "Xem Giỏ Hàng"
+    },
+    "headerRegister": {
+        "needHelp": "Cần trợ giúp?"
+    },
+    "login": {
+        "login": "Đăng nhập",
+        "password": "Mật khẩu",
+        "loginSubmit": "Đăng nhập",
+        "newToMyShop": "Bạn mới biết đến MyShop?",
+        "register": "Đăng ký"
+    },
+    "register": {
+        "register": "Đăng ký",
+        "password": "Mật khẩu",
+        "cofirmedPassword": "Nhập lại mật khẩu",
+        "errorPassword": "Mật khẩu không khớp",
+        "registerSubmit": "Đăng ký",
+        "haveAccount": "Bạn đã có tài khoản?",
+        "login": "Đăng nhập"
+    },
+    "productDetail": {
+        "sold": "Đã bán",
+        "off": "giảm",
+        "quantity": "Số lượng",
+        "available": "sản phẩm có sẵn"
     }
 }

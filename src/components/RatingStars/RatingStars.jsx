@@ -1,10 +1,11 @@
-import React from 'react'
-import * as S from './ratingStars.style'
-import PropTypes from 'prop-types'
-import { useHistory } from 'react-router-dom'
-import queryString from 'query-string'
-import { path } from 'constants/path'
 import classNames from 'classnames'
+import { path } from 'constants/path'
+import PropTypes from 'prop-types'
+import queryString from 'query-string'
+import React from 'react'
+import { useTranslation } from 'react-i18next'
+import { useHistory } from 'react-router-dom'
+import * as S from './ratingStars.style'
 
 RatingStars.propTypes = {
     filters: PropTypes.object.isRequired
@@ -20,6 +21,8 @@ export default function RatingStars({ filters }) {
         }
         history.push(path.home + `?${queryString.stringify(_filters)}`)
     }
+
+    const { t } = useTranslation()
 
     return (
         <div>
@@ -106,7 +109,7 @@ export default function RatingStars({ filters }) {
                                     </svg>
                                 )
                             })}
-                        {index !== 0 && <span>trở lên</span>}
+                        {index !== 0 && <span>{t('filterPanel.up')}</span>}
                     </S.RatingStarsContainer>
                 ))}
         </div>

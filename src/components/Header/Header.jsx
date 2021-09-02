@@ -2,6 +2,7 @@ import { path } from 'constants/path'
 import usePopover from 'hooks/usePopover'
 import useQuery from 'hooks/useQuery'
 import React, { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { formatMoney } from 'utils/helper'
@@ -31,6 +32,8 @@ export default function Header() {
             history.push(path.home + `?name=${searchValue}`)
         }
     }
+
+    const { t } = useTranslation()
 
     return (
         <S.StyledHeader>
@@ -64,7 +67,7 @@ export default function Header() {
                         </svg>
                     </S.Logo>
                     <S.StyledForm onSubmit={search}>
-                        <S.StyledInput placeholder="Tìm kiếm sản phẩm" value={searchValue} onChange={onChangeSearch} />
+                        <S.StyledInput placeholder={t('header.search')} value={searchValue} onChange={onChangeSearch} />
                         <S.StyledButton type="submit">
                             <svg height={19} viewBox="0 0 19 19" width={19} className="shopee-svg-icon ">
                                 <g fillRule="evenodd" stroke="none" strokeWidth={1}>
@@ -104,7 +107,7 @@ export default function Header() {
                             </S.CartIcon>
                             <Popover active={activePopover}>
                                 <S.PopoverContent>
-                                    <S.PopoverTitle>Sản phẩm mới thêm</S.PopoverTitle>
+                                    <S.PopoverTitle>{t('header.addProducts')}</S.PopoverTitle>
                                     {purchases.slice(0, 5).map(purchase => (
                                         <S.MiniProductCart key={purchase._id}>
                                             <S.MiniProductCartImg src={purchase.product.image} />
@@ -118,10 +121,12 @@ export default function Header() {
                                     <S.PopoverFooter>
                                         <S.MoreProduct>
                                             {purchases.length > 5 && (
-                                                <span>{purchases.length - 5} sản phẩm vào giỏ</span>
+                                                <span>
+                                                    {purchases.length - 5} {t('header.moreProducts')}
+                                                </span>
                                             )}
                                         </S.MoreProduct>
-                                        <S.ButtonShowCart to={path.cart}>Xem Giỏ Hàng</S.ButtonShowCart>
+                                        <S.ButtonShowCart to={path.cart}>{t('header.viewCart')}</S.ButtonShowCart>
                                     </S.PopoverFooter>
                                 </S.PopoverContent>
                             </Popover>
