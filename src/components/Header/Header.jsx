@@ -6,13 +6,16 @@ import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { formatMoney } from 'utils/helper'
-import NavBar from '../NavBar/NavBar'
-import Popover from '../Popover/Popover'
+import NavBar from 'components/NavBar/NavBar'
+import Popover from 'components/Popover/Popover'
+import PopoverCart from 'components/PopoverCart/PopoverCart'
 import * as S from './header.style'
 
 export default function Header() {
     const { activePopover, hidePopover, showPopover } = usePopover()
     const [searchValue, setSearchValue] = useState('')
+    const [clicked, setClicked] = useState(false)
+    const [clickCart, setClickCart] = useState(false)
     const history = useHistory()
     const query = useQuery()
     const purchases = useSelector(state => state.cart.purchases)
@@ -35,10 +38,41 @@ export default function Header() {
 
     const { t } = useTranslation()
 
+    const handleClick = () => {
+        setClicked(!clicked)
+    }
+
+    const handleClickCart = () => {
+        setClickCart(!clickCart)
+    }
+
     return (
         <S.StyledHeader>
-            <div className="container">
-                <NavBar />
+            <div className="container container-header">
+                <NavBar clicked={clicked} handleClick={handleClick} />
+                <PopoverCart clickCart={clickCart}>
+                    <S.PopoverContent>
+                        <S.PopoverTitle>{t('header.addProducts')}</S.PopoverTitle>
+                        {purchases.slice(0, 5).map(purchase => (
+                            <S.MiniProductCart key={purchase._id}>
+                                <S.MiniProductCartImg src={purchase.product.image} />
+                                <S.MiniProductCartTitle>{purchase.product.name}</S.MiniProductCartTitle>
+                                <S.MiniProductCartPrice>{formatMoney(purchase.product.price)}</S.MiniProductCartPrice>
+                            </S.MiniProductCart>
+                        ))}
+
+                        <S.PopoverFooter>
+                            <S.MoreProduct>
+                                {purchases.length > 5 && (
+                                    <span>
+                                        {purchases.length - 5} {t('header.moreProducts')}
+                                    </span>
+                                )}
+                            </S.MoreProduct>
+                            <S.ButtonShowCart to={path.cart}>{t('header.viewCart')}</S.ButtonShowCart>
+                        </S.PopoverFooter>
+                    </S.PopoverContent>
+                </PopoverCart>
                 <S.SearchWrap>
                     <S.Logo to="">
                         <svg
@@ -87,7 +121,7 @@ export default function Header() {
                     </S.StyledForm>
                     <S.Cart onMouseEnter={showPopover} onMouseLeave={hidePopover}>
                         <S.CartContainer>
-                            <S.CartIcon to="">
+                            <S.CartIcon to="" onClick={handleClickCart}>
                                 <svg
                                     viewBox="0 0 26.6 25.6"
                                     className="shopee-svg-icon navbar__link-icon icon-shopping-cart-2"
@@ -133,6 +167,7 @@ export default function Header() {
                         </S.CartContainer>
                     </S.Cart>
                 </S.SearchWrap>
+                {clickCart && <S.Overlay />}
             </div>
         </S.StyledHeader>
     )

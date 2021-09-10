@@ -4,34 +4,17 @@ import styled from 'styled-components'
 export const Container = styled.div`
     display: flex;
     padding: 2rem 0 5rem;
-    @media screen and (max-width: 991px) and (min-width: 500px) {
-        position: relative;
-        padding: 0;
-    }
 `
 
 export const Sidebar = styled.div`
     flex-shrink: 0;
     width: 180px;
-    @media screen and (max-width: 991px) and (min-width: 500px) {
-        position: absolute;
-        z-index: 9999;
-        top: 0;
-        left: 0;
-        transform: ${({ clicked }) => (clicked ? 'translateX(0)' : 'translateX(-100%)')};
-        transition: all 0.5s ease;
-        background: #f5f5f5;
-        height: 100vh;
-    }
 `
 
 export const Main = styled.div`
     position: relative;
     flex-grow: 1;
     margin-left: 2.7rem;
-    @media screen and (max-width: 991px) and (min-width: 500px) {
-        margin-left: initial;
-    }
 `
 
 export const Brief = styled.div`

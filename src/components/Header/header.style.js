@@ -7,11 +7,23 @@ export const StyledHeader = styled.header`
     margin-bottom: 3rem;
     width: 100%;
     min-width: max-content;
+
+    @media screen and (max-width: 991px) and (min-width: 500px) {
+        margin-bottom: initial;
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        margin-bottom: initial;
+    }
 `
 export const SearchWrap = styled.div`
     display: flex;
     align-items: center;
     padding-bottom: 1rem;
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        padding-top: 0.5rem;
+    }
 `
 
 export const Logo = styled(Link)`
@@ -20,6 +32,19 @@ export const Logo = styled(Link)`
         width: 162px;
         height: 50px;
         fill: #fff;
+    }
+    @media screen and (max-width: 991px) and (min-width: 500px) {
+        margin-right: 3rem;
+        svg {
+            width: 140px;
+        }
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        margin-right: 1rem;
+        svg {
+            width: 120px;
+        }
     }
 `
 
@@ -31,12 +56,21 @@ export const StyledForm = styled.form`
     background: #fff;
     border-radius: 2px;
     height: 4rem;
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        height: 3.2rem;
+        flex-grow: initial;
+    }
 `
 
 export const StyledInput = styled.input`
     flex-grow: 1;
     border: 0;
     padding-left: 1rem;
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        padding-left: 0.5rem;
+    }
 `
 
 export const StyledButton = styled(Button)`
@@ -47,6 +81,11 @@ export const StyledButton = styled(Button)`
         color: #fff;
         fill: currentColor;
     }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
 `
 
 export const Cart = styled.div`
@@ -54,6 +93,10 @@ export const Cart = styled.div`
     justify-content: center;
     align-items: center;
     margin: auto 5rem;
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        margin: auto 1.5rem;
+    }
 `
 
 export const CartContainer = styled.div`
@@ -93,6 +136,11 @@ export const PopoverContent = styled.div`
     overflow: hidden;
     background-color: #fff;
     width: 40rem;
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        box-shadow: initial;
+        width: initial;
+    }
 `
 
 export const PopoverTitle = styled.div`
@@ -143,4 +191,18 @@ export const ButtonShowCart = styled(ButtonLink)`
     padding: 1px 15px;
     text-transform: capitalize;
     flex-shrink: 0;
+`
+
+export const Overlay = styled.div`
+    display: block;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    background: #000;
+    opacity: 0.8;
+    visibility: visible;
+    z-index: 99;
+    transition: all 0.4s;
 `

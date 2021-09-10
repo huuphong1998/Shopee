@@ -7,10 +7,26 @@ export const Profile = styled.div`
     background: #fff;
     box-shadow: 0 1px 2px 0 rgb(0 0 0 / 13%);
     border-radius: 2px;
+    @media screen and (max-width: 991px) and (min-width: 500px) {
+        padding: 0 20px;
+        box-shadow: initial;
+    }
 `
 export const ProfileHeader = styled.div`
+    display: flex;
+    justify-content: space-between;
     padding: 22px 0;
     border-bottom: 1px solid #efefef;
+    @media screen and (max-width: 991px) and (min-width: 500px) {
+        padding: 15px 0;
+    }
+`
+export const ProfileHeaderItem1 = styled.div``
+export const ProfileHeaderItem2 = styled.div`
+    display: none;
+    @media screen and (max-width: 991px) and (min-width: 500px) {
+        display: block;
+    }
 `
 export const ProfileHeaderTitle = styled.div`
     font-size: 1.8rem;
@@ -27,16 +43,31 @@ export const ProfileInfo = styled.div`
     display: flex;
     align-items: flex-start;
     padding-top: 30px;
+    @media screen and (max-width: 991px) and (min-width: 500px) {
+        flex-direction: column-reverse;
+        padding-top: initial;
+    }
 `
 export const ProfileLeft = styled.form`
     padding-right: 50px;
     flex-grow: 1;
+    @media screen and (max-width: 991px) and (min-width: 500px) {
+        padding-right: initial;
+        width: 100%;
+        padding-top: 10px;
+    }
 `
 export const ProfileRight = styled.div`
     width: 28rem;
     border-left: 1px solid #efefef;
     display: flex;
     justify-content: center;
+    @media screen and (max-width: 991px) and (min-width: 500px) {
+        width: 100%;
+        border-left: initial;
+        border-bottom: 1px solid #efefef;
+        padding-bottom: 10px;
+    }
 `
 export const InputLabel = styled.div`
     margin-bottom: 30px;
@@ -99,11 +130,19 @@ export const ButtonUpload = styled(Button)`
     height: 4rem;
     padding-left: 2.5rem;
     padding-right: 2.5rem;
+    @media screen and (max-width: 991px) and (min-width: 500px) {
+        height: 3.5rem;
+    }
 `
 export const AvatarUploaderTextContainer = styled.div`
     margin-top: 12px;
     > div {
         color: #999;
+    }
+    @media screen and (max-width: 991px) and (min-width: 500px) {
+        > div {
+            display: none;
+        }
     }
 `
 export const ErrorMessage = styled.div`

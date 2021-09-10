@@ -1,17 +1,25 @@
 import { unwrapResult } from '@reduxjs/toolkit'
 import PurchaseSkeleton from 'components/Skeleton/PurchaseSkeleton'
+import MenuHamburger from 'components/MenuHamburger/MenuHamburger'
 import { path } from 'constants/path'
 import { purchaseStatus } from 'constants/status'
 import useQuery from 'hooks/useQuery'
 import queryString from 'query-string'
+import PropTypes from 'prop-types'
 import React, { useEffect, useMemo, useState } from 'react'
 import { Helmet } from 'react-helmet-async'
+import { useTranslation } from 'react-i18next'
 import { useDispatch } from 'react-redux'
 import { formatMoney, generateNameId } from 'utils/helper'
 import { getPurchases } from '../user.slice'
 import * as S from './purchase.style'
 
-export default function Purchase() {
+Purchase.propTypes = {
+    clicked: PropTypes.bool,
+    handleClick: PropTypes.func
+}
+
+export default function Purchase({ clicked, handleClick }) {
     const [purchases, setPurchases] = useState([])
     const [loading, setLoading] = useState(true)
     const dispatch = useDispatch()
@@ -29,14 +37,16 @@ export default function Purchase() {
 
     const handleActive = value => () => Number(value) === Number(status)
 
+    const { t } = useTranslation()
+
     return (
         <div>
             <Helmet>
-                <title>Đơn mua</title>
+                <title>{t('purchase.title')}</title>
             </Helmet>
             <S.PurchaseTabs>
                 <S.PurchaseTabItem to={path.purchase} isActive={handleActive(purchaseStatus.all)}>
-                    Tất cả
+                    {t('purchase.all')}
                 </S.PurchaseTabItem>
                 <S.PurchaseTabItem
                     to={{
@@ -45,7 +55,7 @@ export default function Purchase() {
                     }}
                     isActive={handleActive(purchaseStatus.waitForConfirmation)}
                 >
-                    Chờ xác nhận
+                    {t('purchase.toPay')}
                 </S.PurchaseTabItem>
                 <S.PurchaseTabItem
                     to={{
@@ -54,7 +64,7 @@ export default function Purchase() {
                     }}
                     isActive={handleActive(purchaseStatus.waitForGetting)}
                 >
-                    Chờ lấy hàng
+                    {t('purchase.toShip')}
                 </S.PurchaseTabItem>
                 <S.PurchaseTabItem
                     to={{
@@ -63,7 +73,7 @@ export default function Purchase() {
                     }}
                     isActive={handleActive(purchaseStatus.inProgress)}
                 >
-                    Đang giao
+                    {t('purchase.toReceive')}
                 </S.PurchaseTabItem>
                 <S.PurchaseTabItem
                     to={{
@@ -72,7 +82,7 @@ export default function Purchase() {
                     }}
                     isActive={handleActive(purchaseStatus.delivered)}
                 >
-                    Đã giao
+                    {t('purchase.completed')}
                 </S.PurchaseTabItem>
                 <S.PurchaseTabItem
                     to={{
@@ -81,8 +91,11 @@ export default function Purchase() {
                     }}
                     isActive={handleActive(purchaseStatus.cancelled)}
                 >
-                    Đã hủy
+                    {t('purchase.cancelled')}
                 </S.PurchaseTabItem>
+                <S.PurchaseTabItemMenu>
+                    <MenuHamburger clicked={clicked} handleClick={handleClick} />
+                </S.PurchaseTabItemMenu>
             </S.PurchaseTabs>
             <S.PurchaseList>
                 {loading ? (
@@ -103,10 +116,10 @@ export default function Purchase() {
                             </S.OrderCardContent>
                             <S.OrderCardButtonsContainer>
                                 <S.PurchaseButton to={path.product + `/${generateNameId(purchase.product)}`} light={1}>
-                                    Xem sản phẩm
+                                    {t('purchase.viewProduct')}
                                 </S.PurchaseButton>
                                 <S.TotalPrice>
-                                    <S.TotalPriceLabel>Tổng giá tiền</S.TotalPriceLabel>
+                                    <S.TotalPriceLabel>{t('purchase.totalPrice')}</S.TotalPriceLabel>
                                     <S.TotalPricePrice>
                                         {formatMoney(purchase.product.price * purchase.buy_count)}
                                     </S.TotalPricePrice>

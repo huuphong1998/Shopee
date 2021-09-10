@@ -1,6 +1,7 @@
 import NavBar from 'components/NavBar/NavBar'
 import { path } from 'constants/path'
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useHistory } from 'react-router-dom'
 import * as S from './headerCart.style'
 
@@ -17,6 +18,8 @@ export default function HeaderCart() {
     }
 
     const onChangeSearch = event => setSearchValue(event.target.value)
+
+    const { t } = useTranslation()
 
     return (
         <S.Header>
@@ -52,12 +55,12 @@ export default function HeaderCart() {
                                 fill="#EE4D2D"
                             />
                         </svg>
-                        <S.LogoPageName>Giỏ hàng</S.LogoPageName>
+                        <S.LogoPageName>{t('headerCart.title')}</S.LogoPageName>
                     </S.Logo>
                     <S.Form onSubmit={search}>
                         <S.Input
                             type="text"
-                            placeholder="Tìm kiếm sản phẩm"
+                            placeholder={t('headerCart.search')}
                             value={searchValue}
                             onChange={onChangeSearch}
                         />

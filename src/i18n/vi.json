@@ -50,6 +50,10 @@
     "headerRegister": {
         "needHelp": "Cần trợ giúp?"
     },
+    "headerCart": {
+        "title": "Giỏ hàng",
+        "search": "Tìm kiếm sản phẩm"
+    },
     "login": {
         "login": "Đăng nhập",
         "password": "Mật khẩu",
@@ -70,6 +74,61 @@
         "sold": "Đã bán",
         "off": "giảm",
         "quantity": "Số lượng",
-        "available": "sản phẩm có sẵn"
+        "available": "sản phẩm có sẵn",
+        "addToCart": "Thêm vào giỏ hàng",
+        "productDes": "MÔ TẢ SẢN PHẨM"
+    },
+    "cart": {
+        "product": "Sản phẩm",
+        "unitPrice": "Đơn giá",
+        "quantity": "Số lượng",
+        "totalPrice": "Số tiền",
+        "actions": "Thao tác",
+        "delete": "Xóa",
+        "selectAll": "Chọn tất cả",
+        "total": "Tổng thanh toán",
+        "products": "sản phẩm",
+        "economical": "Tiết kiệm",
+        "buy": "Mua hàng"
+    },
+    "user": {
+        "editProfile": "Sửa hồ sơ",
+        "myAccount": "Tài khoản của tôi",
+        "changePassword": "Đổi mật khẩu",
+        "myPurchase": "Đơn Mua"
+    },
+    "profile": {
+        "title": "Hồ sơ của tôi",
+        "manageAccount": "Quản lý thông tin hồ sơ để bảo mật tài khoản",
+        "name": "Tên",
+        "phone": "Số điện thoại",
+        "address": "Địa chỉ",
+        "dateOfBirth": "Ngày sinh",
+        "date": "Ngày",
+        "month": "Tháng",
+        "year": "Năm",
+        "save": "Lưu",
+        "selectImage": "Chọn ảnh",
+        "size": "Dụng lượng file tối đa 1 MB",
+        "extension": "Định dạng:.JPEG, .PNG"
+    },
+    "password": {
+        "title": "Đổi mật khẩu",
+        "security": "Để bảo mật tài khoản, vui lòng không chia sẻ mật khẩu cho người khác",
+        "currentPassword": "Mật khẩu hiện tại",
+        "newPassword": "Mật khẩu mới",
+        "confirmedPassword": "Xác nhận mật khẩu",
+        "confirmed": "xác nhận"
+    },
+    "purchase": {
+        "title": "Đơn mua",
+        "all": "Tất cả",
+        "toPay": "Chờ xác nhận",
+        "toShip": "Chờ lấy hàng",
+        "toReceive": "Đang giao",
+        "completed": "Đã giao",
+        "cancelled": "Đã hủy",
+        "viewProduct": "Xem sản phẩm",
+        "totalPrice": "Tổng giá tiền"
     }
 }

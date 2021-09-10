@@ -18,6 +18,10 @@ export const Banner = styled.div`
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    @media screen and (max-width: 991px) and (min-width: 500px) {
+        width: 68rem;
+        height: 42rem;
+    }
 `
 
 export const FormWrapper = styled.div`

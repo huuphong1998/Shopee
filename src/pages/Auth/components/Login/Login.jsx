@@ -59,7 +59,7 @@ export default function Login() {
     return (
         <S.StyledRegister>
             <Helmet>
-                <title>Đăng nhập</title>
+                <title>{t('routes.titleLogin')}</title>
             </Helmet>
             <S.Banner>
                 <S.FormWrapper>

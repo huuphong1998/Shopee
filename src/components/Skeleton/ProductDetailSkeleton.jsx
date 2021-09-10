@@ -1,7 +1,7 @@
-import ProductRating from 'components/ProductRating/ProductRating'
-import React from 'react'
-import * as S from 'pages/ProductDetail/productDetail.style'
 import { Skeleton } from '@material-ui/lab'
+import ProductRating from 'components/ProductRating/ProductRating'
+import * as S from 'pages/ProductDetail/productDetail.style'
+import React from 'react'
 
 export default function ProductDetailSkeleton() {
     return (

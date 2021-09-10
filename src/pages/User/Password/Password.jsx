@@ -1,17 +1,25 @@
 import { unwrapResult } from '@reduxjs/toolkit'
 import ErrorMessage from 'components/ErrorMessage/ErrorMessage'
 import InputPassword from 'components/InputPassword/InputPassword'
+import MenuHamburger from 'components/MenuHamburger/MenuHamburger'
 import { rules } from 'constants/rules'
 import { useSnackbar } from 'notistack'
 import { updateMe } from 'pages/Auth/userSlice'
+import PropTypes from 'prop-types'
 import React from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Controller, useForm } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
 import { useDispatch } from 'react-redux'
 import * as S from './password.style'
 import { PasswordContent } from './password.style'
 
-export default function Password() {
+Password.propTypes = {
+    clicked: PropTypes.bool,
+    handleClick: PropTypes.func
+}
+
+export default function Password({ clicked, handleClick }) {
     const { enqueueSnackbar } = useSnackbar()
 
     const {
@@ -51,21 +59,26 @@ export default function Password() {
         }
     }
 
+    const { t } = useTranslation()
+
     return (
         <S.Profile>
             <Helmet>
-                <title>Đổi mật khẩu</title>
+                <title>{t('password.title')}</title>
             </Helmet>
             <S.ProfileHeader>
                 <S.ProfileHeaderWrap>
-                    <S.ProfileHeaderTitle>Đổi mật khẩu</S.ProfileHeaderTitle>
-                    <S.ProfileHeaderSubtitle>
-                        Để bảo mật tài khoản, vui lòng không chia sẻ mật khẩu cho người khác
-                    </S.ProfileHeaderSubtitle>
+                    <S.ProfileHeaderItem1>
+                        <S.ProfileHeaderTitle>{t('password.title')}</S.ProfileHeaderTitle>
+                        <S.ProfileHeaderSubtitle>{t('password.security')}</S.ProfileHeaderSubtitle>
+                    </S.ProfileHeaderItem1>
+                    <S.ProfileHeaderItem2>
+                        <MenuHamburger clicked={clicked} handleClick={handleClick} />
+                    </S.ProfileHeaderItem2>
                 </S.ProfileHeaderWrap>
                 <PasswordContent onSubmit={handleSubmit(update)}>
                     <S.InputLabel>
-                        <S.InputLabelLabel>Mật khẩu hiện tại</S.InputLabelLabel>
+                        <S.InputLabelLabel>{t('password.currentPassword')}</S.InputLabelLabel>
                         <S.InputLabelContent>
                             <Controller
                                 name="password"
@@ -79,7 +92,7 @@ export default function Password() {
                         </S.InputLabelContent>
                     </S.InputLabel>
                     <S.InputLabel>
-                        <S.InputLabelLabel>Mật khẩu mới</S.InputLabelLabel>
+                        <S.InputLabelLabel>{t('password.newPassword')}</S.InputLabelLabel>
                         <S.InputLabelContent>
                             <Controller
                                 name="new_password"
@@ -97,7 +110,7 @@ export default function Password() {
                         </S.InputLabelContent>
                     </S.InputLabel>
                     <S.InputLabel>
-                        <S.InputLabelLabel>Xác nhận mật khẩu</S.InputLabelLabel>
+                        <S.InputLabelLabel>{t('password.confirmedPassword')}</S.InputLabelLabel>
                         <S.InputLabelContent>
                             <Controller
                                 name="confirmed_new_password"
@@ -121,7 +134,7 @@ export default function Password() {
                         </S.InputLabelContent>
                     </S.InputLabel>
                     <S.Submit>
-                        <S.ButtonSubmit type="submit">xác nhận</S.ButtonSubmit>
+                        <S.ButtonSubmit type="submit">{t('password.confirmed')}</S.ButtonSubmit>
                     </S.Submit>
                 </PasswordContent>
             </S.ProfileHeader>

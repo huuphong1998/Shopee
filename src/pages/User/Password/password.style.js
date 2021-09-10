@@ -18,6 +18,15 @@ export const ProfileHeader = styled.div`
 export const ProfileHeaderWrap = styled.div`
     border-bottom: 0.0625rem solid #efefef;
     padding-bottom: 1.125rem;
+    display: flex;
+    justify-content: space-between;
+`
+export const ProfileHeaderItem1 = styled.div``
+export const ProfileHeaderItem2 = styled.div`
+    display: none;
+    @media screen and (max-width: 991px) and (min-width: 500px) {
+        display: block;
+    }
 `
 export const ProfileHeaderTitle = styled.div`
     font-size: 1.8rem;

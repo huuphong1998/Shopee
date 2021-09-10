@@ -9,7 +9,7 @@ export default function Footer() {
 
     return (
         <F.Footer>
-            <div className="container">
+            <div className="container container-footer">
                 <F.Footer1>
                     <div>{t('footer.copyright')}</div>
                     <F.Language>

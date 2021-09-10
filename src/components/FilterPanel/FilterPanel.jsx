@@ -14,7 +14,7 @@ FilterPanel.propTypes = {
     loading: PropTypes.bool
 }
 
-export default function FilterPanel({ categories, filters, loading }) {
+export default function FilterPanel({ categories, filters }) {
     const history = useHistory()
     const {
         control,

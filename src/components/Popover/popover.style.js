@@ -31,6 +31,10 @@ export const Drawer = styled.div`
         opacity: 0;
         width: 100%;
     }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        display: none;
+    }
 `
 
 export const PopoverArrow = styled.div`

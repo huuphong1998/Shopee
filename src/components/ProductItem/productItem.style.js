@@ -5,6 +5,15 @@ export const Product = styled.div`
     max-width: 20%;
     padding: 0 5px;
     margin: 5px 0;
+    @media screen and (max-width: 991px) and (min-width: 500px) {
+        flex: 1 0 21%;
+        max-width: 25%;
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        flex: 1 0 50%;
+        max-width: 50%;
+    }
 `
 
 export const ProductItem = styled.div`

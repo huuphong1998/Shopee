@@ -1,5 +1,6 @@
 import { unwrapResult } from '@reduxjs/toolkit'
 import FilterPanel from 'components/FilterPanel/FilterPanel'
+import FilterPanelToggle from 'components/FilterPanelToggle/FilterPanelToggle'
 import SearchItemResult from 'components/SearchItemResult/SearchItemResult'
 import useQuery from 'hooks/useQuery'
 import React, { useEffect, useState } from 'react'
@@ -16,6 +17,7 @@ export default function Home() {
         pagination: {}
     })
     const [filters, setFilters] = useState({})
+    const [clicked, setClicked] = useState(false)
     const dispatch = useDispatch()
     const query = useQuery()
 
@@ -40,7 +42,6 @@ export default function Home() {
             page: _filters.page,
             limit: _filters.limit,
             category: _filters.category,
-            exclude: _filters.exclude,
             rating_filter: _filters.rating,
             price_max: _filters.maxPrice,
             price_min: _filters.minPrice,
@@ -50,6 +51,7 @@ export default function Home() {
         }
 
         ;(async () => {
+            setClicked(false)
             setLoading(true)
             const data = await dispatch(getProducts({ params }))
             const res = unwrapResult(data)
@@ -58,19 +60,30 @@ export default function Home() {
         })()
     }, [query, dispatch])
 
+    const handleClick = () => {
+        setClicked(!clicked)
+    }
+
     return (
-        <div>
+        <S.Home>
             <Helmet>
                 <title>MyShop Việt Nam | Mua và bán trên ứng dụng di động hoặc wesbite</title>
             </Helmet>
-            <S.Container className="container">
+            <FilterPanelToggle categories={categories} filters={filters} clicked={clicked} />
+            <S.Container className="container container-home">
                 <S.Side>
                     <FilterPanel categories={categories} filters={filters} />
                 </S.Side>
                 <S.Main>
-                    <SearchItemResult productList={productList} filters={filters} loading={loading} />
+                    <SearchItemResult
+                        productList={productList}
+                        filters={filters}
+                        loading={loading}
+                        clicked={clicked}
+                        handleClick={handleClick}
+                    />
                 </S.Main>
             </S.Container>
-        </div>
+        </S.Home>
     )
 }

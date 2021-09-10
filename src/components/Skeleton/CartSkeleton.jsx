@@ -1,7 +1,7 @@
-import React from 'react'
-import * as S from 'pages/Cart/cart.style'
-import CheckBox from 'components/CheckBox/CheckBox'
 import { Skeleton } from '@material-ui/lab'
+import CheckBox from 'components/CheckBox/CheckBox'
+import * as S from 'pages/Cart/cart.style'
+import React from 'react'
 
 export default function CartSkeleton() {
     return (
@@ -28,12 +28,15 @@ export default function CartSkeleton() {
                             </S.CartItemOverviewNameWrapper>
                         </S.CartItemOverview>
                         <S.CartItemUnitPrice>
+                            <span></span>
                             <Skeleton variant="text" width="80%" />
                         </S.CartItemUnitPrice>
                         <S.CartItemQuantity>
+                            <span></span>
                             <Skeleton variant="rect" width="120px" height="30px" />
                         </S.CartItemQuantity>
                         <S.CartItemTotalPrice>
+                            <span></span>
                             <Skeleton variant="text" width="80%" />
                         </S.CartItemTotalPrice>
                         <S.CartItemAction>

@@ -7,6 +7,10 @@ export const Footer = styled.footer`
     background: #f5f5f5;
     width: 100%;
     min-width: max-content;
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        min-width: initial;
+    }
 `
 
 export const Footer1 = styled.div`

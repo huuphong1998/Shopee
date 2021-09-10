@@ -19,6 +19,7 @@ export default function ProductDetail() {
     const [loading, setLoading] = useState(true)
     const [currentImage, setCurrentImage] = useState({})
     const [currentIndexImages, setCurrentIndexImages] = useState([0, 5])
+    const [slideIndex, setSlideIndex] = useState(0)
     const [quantity, setQuantity] = useState(1)
     const { enqueueSnackbar } = useSnackbar()
 
@@ -30,6 +31,7 @@ export default function ProductDetail() {
     }, [product, currentIndexImages])
 
     const dispatch = useDispatch()
+
     const { idProduct } = useParams()
 
     useEffect(() => {
@@ -57,9 +59,22 @@ export default function ProductDetail() {
             setCurrentIndexImages(currentIndexImages => [currentIndexImages[0] - 1, currentIndexImages[1] - 1])
         }
     }
+
+    const choosePrevImage = () => {
+        if (slideIndex > 0) {
+            setSlideIndex(slideIndex => slideIndex - 1)
+        }
+    }
+
     const chooseNext = () => {
         if (currentIndexImages[1] < product.images.length) {
             setCurrentIndexImages(currentIndexImages => [currentIndexImages[0] + 1, currentIndexImages[1] + 1])
+        }
+    }
+
+    const chooseNextImage = () => {
+        if (slideIndex < product.images.length - 1) {
+            setSlideIndex(slideIndex => slideIndex + 1)
         }
     }
 
@@ -91,7 +106,30 @@ export default function ProductDetail() {
                         <S.ProductBriefing>
                             <S.ProductImages>
                                 <S.ProductImageActive>
-                                    <img src={currentImage.url} alt="" />
+                                    <S.ProductIconPrev onClick={choosePrevImage}>
+                                        <svg
+                                            enableBackground="new 0 0 13 20"
+                                            viewBox="0 0 13 20"
+                                            x={0}
+                                            y={0}
+                                            className="shopee-svg-icon icon-arrow-left-bold"
+                                        >
+                                            <polygon points="4.2 10 12.1 2.1 10 -.1 1 8.9 -.1 10 1 11 10 20 12.1 17.9" />
+                                        </svg>
+                                    </S.ProductIconPrev>
+                                    <S.Image1 src={currentImage.url} alt="" />
+                                    <S.Image2 src={product.images[slideIndex].url} alt="" />
+                                    <S.ProductIconNext onClick={chooseNextImage}>
+                                        <svg
+                                            enableBackground="new 0 0 13 21"
+                                            viewBox="0 0 13 21"
+                                            x={0}
+                                            y={0}
+                                            className="shopee-svg-icon icon-arrow-right-bold"
+                                        >
+                                            <polygon points="11.1 9.9 2.1 .9 -.1 3.1 7.9 11 -.1 18.9 2.1 21 11.1 12 12.1 11" />
+                                        </svg>
+                                    </S.ProductIconNext>
                                 </S.ProductImageActive>
                                 <S.ProductImageSlider>
                                     <S.ProductIconButonPrev onClick={choosePrev}>
@@ -202,12 +240,12 @@ export default function ProductDetail() {
                                             />
                                         </g>
                                     </svg>
-                                    Thêm vào giỏ hàng
+                                    {t('productDetail.addToCart')}
                                 </S.ProductButtons>
                             </S.ProductMeta>
                         </S.ProductBriefing>
                         <S.ProductContent>
-                            <S.ProductContentHeading>MÔ TẢ SẢN PHẨM</S.ProductContentHeading>
+                            <S.ProductContentHeading>{t('productDetail.productDes')}</S.ProductContentHeading>
                             <S.ProductContentDetail
                                 dangerouslySetInnerHTML={{
                                     __html: DOMPurify.sanitize(product.description)

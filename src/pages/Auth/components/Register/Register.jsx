@@ -60,7 +60,7 @@ export default function Register() {
     return (
         <S.StyledRegister>
             <Helmet>
-                <title>Đăng ký</title>
+                <title>{t('routes.titleRegiter')}</title>
             </Helmet>
             <S.Banner>
                 <S.FormWrapper>

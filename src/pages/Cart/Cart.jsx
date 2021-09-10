@@ -7,6 +7,7 @@ import keyBy from 'lodash/keyBy'
 import { useSnackbar } from 'notistack'
 import React, { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet-async'
+import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 import { formatMoney, generateNameId } from 'utils/helper'
 import { buyPurchases, deletePurchases, getCartPurchases, updatePurchase } from './cart.slice'
@@ -47,7 +48,6 @@ export default function Cart() {
         })
         setLoading(false)
     }, [purchases])
-    console.log(loading)
 
     const handleInputQuantity = indexPurchase => value => {
         const newLocalPurchases = createNextState(localPurchases, draft => {
@@ -144,21 +144,23 @@ export default function Cart() {
         }
     }
 
+    const { t } = useTranslation()
+
     return (
         <div className="container">
             <Helmet>
-                <title>Giỏ hàng</title>
+                <title>{t('headerCart.title')}</title>
             </Helmet>
             <div>
                 <S.ProductHeader>
                     <S.ProductHeaderCheckbox>
                         <CheckBox onChange={handleCheckAll} checked={isCheckedAll} />
                     </S.ProductHeaderCheckbox>
-                    <S.ProductHeaderName>Sản phẩm</S.ProductHeaderName>
-                    <S.ProductHeaderUnitPrice>Đơn giá</S.ProductHeaderUnitPrice>
-                    <S.ProductHeaderQuantity>Số lượng</S.ProductHeaderQuantity>
-                    <S.ProductHeaderTotalPrice>Số tiền</S.ProductHeaderTotalPrice>
-                    <S.ProductHeaderAction>Thao tác</S.ProductHeaderAction>
+                    <S.ProductHeaderName>{t('cart.product')}</S.ProductHeaderName>
+                    <S.ProductHeaderUnitPrice>{t('cart.unitPrice')}</S.ProductHeaderUnitPrice>
+                    <S.ProductHeaderQuantity>{t('cart.quantity')}</S.ProductHeaderQuantity>
+                    <S.ProductHeaderTotalPrice>{t('cart.totalPrice')}</S.ProductHeaderTotalPrice>
+                    <S.ProductHeaderAction>{t('cart.actions')}</S.ProductHeaderAction>
                 </S.ProductHeader>
                 <S.ProductSection>
                     {loading ? (
@@ -182,11 +184,14 @@ export default function Cart() {
                                         </S.CartItemOverviewName>
                                     </S.CartItemOverviewNameWrapper>
                                 </S.CartItemOverview>
+                                <S.CartItemEdit onClick={handleRemove(index)}>{t('cart.delete')}</S.CartItemEdit>
                                 <S.CartItemUnitPrice>
+                                    <span>{t('cart.unitPrice')}: </span>
                                     <span>{formatMoney(purchase.product.price_before_discount)}</span>
                                     <span>{formatMoney(purchase.product.price)}</span>
                                 </S.CartItemUnitPrice>
                                 <S.CartItemQuantity>
+                                    <span>{t('cart.quantity')}: </span>
                                     <ProductQuantityController
                                         max={purchase.product.quantity}
                                         value={purchase.buy_count}
@@ -198,10 +203,13 @@ export default function Cart() {
                                     />
                                 </S.CartItemQuantity>
                                 <S.CartItemTotalPrice>
+                                    <span>{t('cart.totalPrice')}: </span>
                                     <span>{formatMoney(purchase.product.price * purchase.buy_count)}</span>
                                 </S.CartItemTotalPrice>
                                 <S.CartItemAction>
-                                    <S.CartItemActionButton onClick={handleRemove(index)}>Xóa</S.CartItemActionButton>
+                                    <S.CartItemActionButton onClick={handleRemove(index)}>
+                                        {t('cart.delete')}
+                                    </S.CartItemActionButton>
                                 </S.CartItemAction>
                             </S.CartItem>
                         ))
@@ -212,20 +220,24 @@ export default function Cart() {
                 <S.CartFooterCheckbox>
                     <CheckBox onChange={handleCheckAll} checked={isCheckedAll} />
                 </S.CartFooterCheckbox>
-                <S.CartFooterButton onClick={handleCheckAll}>Chọn tất cả ({purchases.length})</S.CartFooterButton>
-                <S.CartFooterButton onClick={handleRemoveManyPurchase}>Xóa</S.CartFooterButton>
+                <S.CartFooterButton onClick={handleCheckAll}>
+                    {t('cart.selectAll')} ({purchases.length})
+                </S.CartFooterButton>
+                <S.CartFooterButton onClick={handleRemoveManyPurchase}>{t('cart.delete')}</S.CartFooterButton>
                 <S.CartFooterSpaceBetween />
                 <S.CartFooterPrice>
                     <S.CartFooterPriceTop>
-                        <div>Tổng thanh toán ({totalCheckedPurchases} sản phẩm): </div>
+                        <div>
+                            {t('cart.total')} ({totalCheckedPurchases} {t('cart.products')}):{' '}
+                        </div>
                         <div>{formatMoney(totalCheckedPurchasesPrice)}</div>
                     </S.CartFooterPriceTop>
                     <S.CartFooterPriceBot>
-                        <div>Tiết kiệm</div>
+                        <div>{t('cart.economical')}</div>
                         <div>{formatMoney(totalCheckedPurchasesSavingPrice)}</div>
                     </S.CartFooterPriceBot>
                 </S.CartFooterPrice>
-                <S.CartFooterCheckout onClick={handleBuyPurchases}>Mua hàng</S.CartFooterCheckout>
+                <S.CartFooterCheckout onClick={handleBuyPurchases}>{t('cart.buy')}</S.CartFooterCheckout>
             </S.CartFooter>
         </div>
     )

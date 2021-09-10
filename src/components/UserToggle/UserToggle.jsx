@@ -1,4 +1,3 @@
-import Overlay from 'components/Overlay/Overlay'
 import { path } from 'constants/path'
 import Password from 'pages/User/Password/Password'
 import Profile from 'pages/User/Profile/Profile'
@@ -7,9 +6,9 @@ import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { Redirect, Route, Switch } from 'react-router-dom'
-import * as S from './user.style'
+import * as S from './userToggle.style'
 
-export default function User() {
+export default function UserToggle() {
     const profile = useSelector(state => state.user.profile)
     const [clicked, setClicked] = useState(false)
 
@@ -33,7 +32,7 @@ export default function User() {
     return (
         <div>
             <S.Container className="container">
-                <S.Sidebar clicked={clicked}>
+                <S.Sidebar>
                     <S.Brief>
                         <S.BriefAvatar to={path.profile}>
                             <img
@@ -62,19 +61,19 @@ export default function User() {
                         </S.BriefRight>
                     </S.Brief>
                     <S.SidebarMenu>
-                        <S.SidebarMenuEntry to={path.profile} onClick={handleClick}>
+                        <S.SidebarMenuEntry to={path.profile}>
                             <S.SidebarMenuEntryIcon>
                                 <img src="https://cf.shopee.vn/file/ba61750a46794d8847c3f463c5e71cc4" alt="" />
                             </S.SidebarMenuEntryIcon>
                             {t('user.myAccount')}
                         </S.SidebarMenuEntry>
-                        <S.SidebarMenuEntry to={path.password} onClick={handleClick}>
+                        <S.SidebarMenuEntry to={path.password}>
                             <S.SidebarMenuEntryIcon>
                                 <img src="https://cf.shopee.vn/file/ba61750a46794d8847c3f463c5e71cc4" alt="" />
                             </S.SidebarMenuEntryIcon>
                             {t('user.changePassword')}
                         </S.SidebarMenuEntry>
-                        <S.SidebarMenuEntry to={path.purchase} onClick={handleClick}>
+                        <S.SidebarMenuEntry to={path.purchase}>
                             <S.SidebarMenuEntryIcon>
                                 <img src="https://cf.shopee.vn/file/f0049e9df4e536bc3e7f140d071e9078" alt="" />
                             </S.SidebarMenuEntryIcon>
@@ -91,14 +90,13 @@ export default function User() {
                             <Profile clicked={clicked} handleClick={handleClick} />
                         </Route>
                         <Route path={path.password}>
-                            <Password clicked={clicked} handleClick={handleClick} />
+                            <Password />
                         </Route>
                         <Route path={path.purchase}>
-                            <Purchase clicked={clicked} handleClick={handleClick} />
+                            <Purchase />
                         </Route>
                     </Switch>
                 </S.Main>
-                {clicked && <Overlay />}
             </S.Container>
         </div>
     )

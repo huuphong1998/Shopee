@@ -1,4 +1,5 @@
 import classNames from 'classnames'
+import MenuHamburger from 'components/MenuHamburger/MenuHamburger'
 import { path } from 'constants/path'
 import PropTypes from 'prop-types'
 import queryString from 'query-string'
@@ -16,10 +17,12 @@ SearchItemResult.propTypes = {
         pagination: PropTypes.object
     }),
     filters: PropTypes.object,
-    loading: PropTypes.bool
+    loading: PropTypes.bool,
+    clicked: PropTypes.bool,
+    handleClick: PropTypes.func
 }
 
-export default function SearchItemResult({ productList, filters, loading }) {
+export default function SearchItemResult({ productList, filters, loading, clicked, handleClick }) {
     const { products, pagination } = productList
     const history = useHistory()
 
@@ -109,6 +112,7 @@ export default function SearchItemResult({ productList, filters, loading }) {
                         </svg>
                     </S.ButtonControllerNext>
                 </S.MiniPageController>
+                <MenuHamburger clicked={clicked} handleClick={handleClick} />
             </S.SortBar>
             <S.ProductList>
                 {loading ? (

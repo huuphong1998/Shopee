@@ -6,11 +6,37 @@ export const Navbar = styled.div`
     display: flex;
     justify-content: flex-end;
     padding: 1rem 0;
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        padding: 1.5rem 0;
+    }
 `
 
 export const NavMenu = styled.ul`
     display: flex;
+    width: 100%;
     margin-bottom: 0;
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        padding-left: initial;
+        justify-content: space-between;
+    }
+`
+export const MenuHamburger = styled.div`
+    display: none;
+    margin-left: -20px;
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        display: block;
+    }
+`
+export const Auth = styled.div`
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        width: initial;
+    }
 `
 
 export const NavLink = styled(Link)`
@@ -33,6 +59,11 @@ export const User = styled.div`
     ${Drawer} {
         width: 15rem;
         top: 135%;
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        margin-left: initial;
+        cursor: initial;
     }
 `
 
@@ -60,6 +91,10 @@ export const UserLink = styled(Link)`
         background-color: #fafafa;
         color: #00bfa5;
     }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        padding: 1rem 1rem 1rem 1rem;
+    }
 `
 
 export const UserButton = styled.button`
@@ -74,4 +109,22 @@ export const UserButton = styled.button`
         background-color: #fafafa;
         color: #00bfa5;
     }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        padding: 1rem 1rem 1rem 1rem;
+    }
+`
+
+export const Overlay = styled.div`
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: #000;
+    opacity: 0.7;
+    visibility: visible;
+    z-index: 99;
+    transition: all 0.4s;
 `

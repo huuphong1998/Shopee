@@ -8,6 +8,9 @@ export const Header = styled.header`
     min-width: max-content;
     background: #fff;
     border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+    @media screen and (max-width: 991px) and (min-width: 500px) {
+        margin-bottom: 2rem;
+    }
 `
 
 export const Navbar = styled.div`

@@ -27,6 +27,15 @@ export const PurchaseTabItem = styled(NavLink)`
         border-bottom: 2px solid #ee4d2d;
     }
 `
+export const PurchaseTabItemMenu = styled.div`
+    flex-grow: 1;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    @media screen and (max-width: 991px) and (min-width: 500px) {
+        display: flex;
+    }
+`
 export const PurchaseList = styled.div``
 export const OrderCard = styled.div`
     box-shadow: 0 1px 1px 0 rgb(0 0 0 / 5%);

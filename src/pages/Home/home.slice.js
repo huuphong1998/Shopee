@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import categoryApi from 'api/categoryApi'
 import productApi from 'api/productApi'
 
-export const getCategories = createAsyncThunk('home/getCategories', async (payload, thunkAPI) => {
+export const getCategories = createAsyncThunk('home/getCategories', async (params, thunkAPI) => {
     try {
         const category = await categoryApi.getCategories()
 

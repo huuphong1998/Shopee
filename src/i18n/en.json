@@ -50,6 +50,10 @@
     "headerRegister": {
         "needHelp": "Need help?"
     },
+    "headerCart": {
+        "title": "Shopping Cart",
+        "search": "Search for products, brands and shops"
+    },
     "login": {
         "login": "Log In",
         "password": "Password",
@@ -65,5 +69,66 @@
         "registerSubmit": "Sign Up",
         "haveAccount": "Have an account?",
         "login": "Log In"
+    },
+    "productDetail": {
+        "sold": "Sold",
+        "off": "off",
+        "quantity": "Quantity",
+        "available": "piece available",
+        "addToCart": "Add To Cart",
+        "productDes": "PRODUCT DESCRIPTION"
+    },
+    "cart": {
+        "product": "Product",
+        "unitPrice": "Unit Price",
+        "quantity": "Quantity",
+        "totalPrice": "Total Price",
+        "actions": "Actions",
+        "delete": "Delete",
+        "selectAll": "Select All",
+        "total": "Total",
+        "products": "products",
+        "economical": "Economical",
+        "buy": "Buy Now"
+    },
+    "user": {
+        "editProfile": "Edit Profile",
+        "myAccount": "My Account",
+        "changePassword": "Change Password",
+        "myPurchase": "My Purchase"
+    },
+    "profile": {
+        "title": "My Profile",
+        "manageAccount": "Manage and protect your account",
+        "name": "Name",
+        "phone": "Phone Number",
+        "address": "Address",
+        "dateOfBirth": "Date Of Birth",
+        "date": "Date",
+        "month": "Month",
+        "year": "Year",
+        "save": "Save",
+        "selectImage": "Select Image",
+        "size": "File size: maximum 1 MB",
+        "extension": "File extension: .JPEG, .PNG"
+    },
+    "password": {
+        "title": "Change Password",
+        "security": "For your account's security, do not share your password with anyone else",
+        "currentPassword": "Current Password",
+        "newPassword": "New Password",
+        "confirmedPassword": "Confirmed Password",
+        "confirmed": "Confirmed"
+    },
+    "purchase": {
+        "title": "My Purchase",
+        "all": "All",
+        "toPay": "To Pay",
+        "toShip": "To Ship",
+        "toReceive": "To Receive",
+        "completed": "Completed",
+        "cancelled": "Cancelled",
+        "viewProduct": "View Product",
+        "totalPrice": "Total Price"
     }
 }

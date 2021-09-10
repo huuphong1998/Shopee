@@ -1,18 +1,26 @@
 import { unwrapResult } from '@reduxjs/toolkit'
 import ErrorMessage from 'components/ErrorMessage/ErrorMessage'
 import InputText from 'components/InputText/InputText'
+import MenuHamburger from 'components/MenuHamburger/MenuHamburger'
 import { rules } from 'constants/rules'
 import { getDate, getMonth, getYear, isExists } from 'date-fns'
 import range from 'lodash/range'
 import { useSnackbar } from 'notistack'
 import { updateMe } from 'pages/Auth/userSlice'
+import PropTypes from 'prop-types'
 import React from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Controller, useForm } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
 import { useDispatch, useSelector } from 'react-redux'
 import * as S from './profile.style'
 
-export default function Profile() {
+Profile.propTypes = {
+    clicked: PropTypes.bool,
+    handleClick: PropTypes.func
+}
+
+export default function Profile({ clicked, handleClick }) {
     const { enqueueSnackbar } = useSnackbar()
     const profile = useSelector(state => state.user.profile)
     const {
@@ -59,14 +67,21 @@ export default function Profile() {
         isExists(Number(getValues('year')), Number(getValues('month')), Number(getValues('date'))) ||
         'Ngày sinh không đúng'
 
+    const { t } = useTranslation()
+
     return (
         <S.Profile>
             <Helmet>
-                <title>Hồ sơ của tôi</title>
+                <title>{t('profile.title')}</title>
             </Helmet>
             <S.ProfileHeader>
-                <S.ProfileHeaderTitle>Hồ sơ của tôi</S.ProfileHeaderTitle>
-                <S.ProfileHeaderSubtitle>Quản lý thông tin hồ sơ để bảo mật tài khoản</S.ProfileHeaderSubtitle>
+                <S.ProfileHeaderItem1>
+                    <S.ProfileHeaderTitle>{t('profile.title')}</S.ProfileHeaderTitle>
+                    <S.ProfileHeaderSubtitle>{t('profile.manageAccount')}</S.ProfileHeaderSubtitle>
+                </S.ProfileHeaderItem1>
+                <S.ProfileHeaderItem2>
+                    <MenuHamburger clicked={clicked} handleClick={handleClick} />
+                </S.ProfileHeaderItem2>
             </S.ProfileHeader>
             <S.ProfileInfo>
                 <S.ProfileLeft onSubmit={handleSubmit(update)}>
@@ -77,7 +92,7 @@ export default function Profile() {
                         </S.InputLabelContent>
                     </S.InputLabel>
                     <S.InputLabel>
-                        <S.InputLabelLabel>Tên</S.InputLabelLabel>
+                        <S.InputLabelLabel>{t('profile.name')}</S.InputLabelLabel>
                         <S.InputLabelContent>
                             <Controller
                                 name="name"
@@ -91,7 +106,7 @@ export default function Profile() {
                         </S.InputLabelContent>
                     </S.InputLabel>
                     <S.InputLabel>
-                        <S.InputLabelLabel>Số điện thoại</S.InputLabelLabel>
+                        <S.InputLabelLabel>{t('profile.phone')}</S.InputLabelLabel>
                         <S.InputLabelContent>
                             <Controller
                                 name="phone"
@@ -110,7 +125,7 @@ export default function Profile() {
                         </S.InputLabelContent>
                     </S.InputLabel>
                     <S.InputLabel>
-                        <S.InputLabelLabel>Địa chỉ</S.InputLabelLabel>
+                        <S.InputLabelLabel>{t('profile.address')}</S.InputLabelLabel>
                         <S.InputLabelContent>
                             <Controller
                                 name="address"
@@ -129,7 +144,7 @@ export default function Profile() {
                         </S.InputLabelContent>
                     </S.InputLabel>
                     <S.InputLabel>
-                        <S.InputLabelLabel>Ngày sinh</S.InputLabelLabel>
+                        <S.InputLabelLabel>{t('profile.dateOfBirth')}</S.InputLabelLabel>
                         <S.InputLabelContent>
                             <S.DateSelect>
                                 <Controller
@@ -142,7 +157,7 @@ export default function Profile() {
                                     }}
                                     render={({ field: { onChange } }) => (
                                         <S.SelectDate
-                                            title="Ngày"
+                                            title={t('profile.date')}
                                             options={range(1, 32).map(item => ({
                                                 name: item,
                                                 value: item
@@ -162,7 +177,7 @@ export default function Profile() {
                                     }}
                                     render={({ field: { onChange } }) => (
                                         <S.SelectDate
-                                            title="Tháng"
+                                            title={t('profile.month')}
                                             options={range(0, 12).map(item => ({
                                                 name: item + 1,
                                                 value: item
@@ -182,7 +197,7 @@ export default function Profile() {
                                     }}
                                     render={({ field: { onChange } }) => (
                                         <S.SelectDate
-                                            title="Năm"
+                                            title={t('profile.year')}
                                             options={range(1900, 2021).map(item => ({
                                                 name: item,
                                                 value: item
@@ -199,7 +214,7 @@ export default function Profile() {
                         </S.ErrorMessage>
                     </S.InputLabel>
                     <S.Submit>
-                        <S.ButtonSubmit type="submit">Lưu</S.ButtonSubmit>
+                        <S.ButtonSubmit type="submit">{t('profile.save')}</S.ButtonSubmit>
                     </S.Submit>
                 </S.ProfileLeft>
                 <S.ProfileRight>
@@ -208,10 +223,10 @@ export default function Profile() {
                             <img src="https://cf.shopee.vn/file/58d680c8e4d37fa89f5401fd6443081e" alt="" />
                         </S.Avatar>
                         <S.InputFile type="file" accept=".jpg,.jpeg,.png" />
-                        <S.ButtonUpload light={1}>Chọn ảnh</S.ButtonUpload>
+                        <S.ButtonUpload light={1}>{t('profile.selectImage')}</S.ButtonUpload>
                         <S.AvatarUploaderTextContainer>
-                            <div>Dụng lượng file tối đa 1 MB</div>
-                            <div>Định dạng:.JPEG, .PNG</div>
+                            <div>{t('profile.size')}</div>
+                            <div>{t('profile.extension')}</div>
                         </S.AvatarUploaderTextContainer>
                     </S.AvatarUploader>
                 </S.ProfileRight>

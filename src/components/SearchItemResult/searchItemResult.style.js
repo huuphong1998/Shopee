@@ -8,9 +8,21 @@ export const SortBar = styled.div`
     padding: 1.25rem 1.5rem;
     border-radius: 2px;
     margin-bottom: 1.5rem;
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        padding: 1.25rem 1.25rem;
+    }
 `
 
-export const SortBarLabel = styled.span``
+export const SortBarLabel = styled.span`
+    @media screen and (max-width: 991px) and (min-width: 500px) {
+        display: none;
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        display: none;
+    }
+`
 
 export const SortByOptions = styled.div`
     display: flex;
@@ -35,6 +47,13 @@ export const SortByOptionsOption = styled.div`
         color: #fff;
         background: #ee4d2d;
     }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        height: 5.25rem;
+        width: 50px;
+        text-align: center;
+        padding: 0 0.5rem;
+    }
 `
 
 export const SortByPrice = styled.select`
@@ -45,6 +64,12 @@ export const SortByPrice = styled.select`
     padding: 0 1.5rem;
     &.active {
         color: #ee4d2d;
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        padding: 0 0.5rem;
+        width: 60px;
+        height: 5.25rem;
     }
 `
 
@@ -76,6 +101,11 @@ export const ButtonController = styled.button`
         fill: ${({ disabled }) => (disabled ? '#ccc' : '#555')};
         margin-top: 0.125rem;
     }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        width: 3rem;
+        height: 3rem;
+    }
 `
 
 export const ButtonControllerPrev = styled(ButtonController)`
@@ -83,6 +113,13 @@ export const ButtonControllerPrev = styled(ButtonController)`
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     border-right: 1px solid #f2f2f2;
+    @media screen and (max-width: 991px) and (min-width: 500px) {
+        margin-left: 1rem;
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        margin-left: 1rem;
+    }
 `
 
 export const ButtonControllerNext = styled(ButtonController)`
