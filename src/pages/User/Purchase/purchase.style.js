@@ -26,14 +26,25 @@ export const PurchaseTabItem = styled(NavLink)`
         color: #ee4d2d;
         border-bottom: 2px solid #ee4d2d;
     }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        padding: 1.5rem 0;
+        text-align: center;
+    }
 `
 export const PurchaseTabItemMenu = styled.div`
     flex-grow: 1;
     display: none;
     align-items: center;
     justify-content: center;
+
     @media screen and (max-width: 991px) and (min-width: 500px) {
         display: flex;
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        display: flex;
+        padding-right: 5px;
     }
 `
 export const PurchaseList = styled.div``
@@ -43,6 +54,11 @@ export const OrderCard = styled.div`
     background-color: #fff;
     padding: 2rem;
     margin-bottom: 1.5rem;
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
 `
 export const OrderCardContent = styled.div`
     display: flex;
@@ -54,6 +70,13 @@ export const OrderCardDetail = styled.div`
     > img {
         width: 8rem;
         height: 8rem;
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        > img {
+            width: 7rem;
+            height: 7rem;
+        }
     }
 `
 export const SkeletonRect = styled.div`
@@ -92,6 +115,10 @@ export const OrderName = styled.div`
     -webkit-line-clamp: 2;
     margin-bottom: 0.5rem;
     font-size: 1.4rem;
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        font-size: 1.2rem;
+    }
 `
 export const OrderQuantity = styled.div``
 export const OrderCardButtonsContainer = styled.div`
@@ -101,6 +128,10 @@ export const OrderCardButtonsContainer = styled.div`
 `
 export const PurchaseButton = styled(ButtonLink)`
     height: 4rem;
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        height: 3rem;
+    }
 `
 export const TotalPrice = styled.div`
     display: flex;
@@ -112,4 +143,8 @@ export const TotalPriceLabel = styled.div`
 export const TotalPricePrice = styled.div`
     color: #ee4d2d;
     font-size: 3rem;
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        font-size: 2rem;
+    }
 `

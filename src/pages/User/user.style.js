@@ -8,11 +8,17 @@ export const Container = styled.div`
         position: relative;
         padding: 0;
     }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        position: relative;
+        padding: 0;
+    }
 `
 
 export const Sidebar = styled.div`
     flex-shrink: 0;
     width: 180px;
+
     @media screen and (max-width: 991px) and (min-width: 500px) {
         position: absolute;
         z-index: 9999;
@@ -23,13 +29,30 @@ export const Sidebar = styled.div`
         background: #f5f5f5;
         height: 100vh;
     }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        position: absolute;
+        z-index: 9999;
+        top: 0;
+        left: 0;
+        transform: ${({ clicked }) => (clicked ? 'translateX(0)' : 'translateX(-100%)')};
+        transition: all 0.5s ease;
+        background: #f5f5f5;
+        height: 100vh;
+        padding-left: 10px;
+    }
 `
 
 export const Main = styled.div`
     position: relative;
     flex-grow: 1;
     margin-left: 2.7rem;
+
     @media screen and (max-width: 991px) and (min-width: 500px) {
+        margin-left: initial;
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
         margin-left: initial;
     }
 `
@@ -52,6 +75,11 @@ export const BriefAvatar = styled(Link)`
         width: 100%;
         height: 100%;
         object-fit: cover;
+    }
+    svg {
+        width: 100%;
+        height: 100%;
+        fill: #ee4d2d;
     }
 `
 

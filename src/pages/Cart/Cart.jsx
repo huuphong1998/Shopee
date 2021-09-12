@@ -147,7 +147,7 @@ export default function Cart() {
     const { t } = useTranslation()
 
     return (
-        <div className="container">
+        <div className="container container-header">
             <Helmet>
                 <title>{t('headerCart.title')}</title>
             </Helmet>

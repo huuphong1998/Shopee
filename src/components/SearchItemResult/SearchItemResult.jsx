@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import MenuHamburger from 'components/MenuHamburger/MenuHamburger'
+import MenuHamburgerRed from 'components/MenuHamburgerRed/MenuHamburgerRed'
 import { path } from 'constants/path'
 import PropTypes from 'prop-types'
 import queryString from 'query-string'
@@ -112,7 +112,7 @@ export default function SearchItemResult({ productList, filters, loading, clicke
                         </svg>
                     </S.ButtonControllerNext>
                 </S.MiniPageController>
-                <MenuHamburger clicked={clicked} handleClick={handleClick} />
+                <MenuHamburgerRed clicked={clicked} handleClick={handleClick} />
             </S.SortBar>
             <S.ProductList>
                 {loading ? (

@@ -1,7 +1,7 @@
 import { unwrapResult } from '@reduxjs/toolkit'
 import ErrorMessage from 'components/ErrorMessage/ErrorMessage'
 import InputPassword from 'components/InputPassword/InputPassword'
-import MenuHamburger from 'components/MenuHamburger/MenuHamburger'
+import MenuHamburgerRed from 'components/MenuHamburgerRed/MenuHamburgerRed'
 import { rules } from 'constants/rules'
 import { useSnackbar } from 'notistack'
 import { updateMe } from 'pages/Auth/userSlice'
@@ -73,7 +73,7 @@ export default function Password({ clicked, handleClick }) {
                         <S.ProfileHeaderSubtitle>{t('password.security')}</S.ProfileHeaderSubtitle>
                     </S.ProfileHeaderItem1>
                     <S.ProfileHeaderItem2>
-                        <MenuHamburger clicked={clicked} handleClick={handleClick} />
+                        <MenuHamburgerRed clicked={clicked} handleClick={handleClick} />
                     </S.ProfileHeaderItem2>
                 </S.ProfileHeaderWrap>
                 <PasswordContent onSubmit={handleSubmit(update)}>

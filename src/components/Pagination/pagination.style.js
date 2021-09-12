@@ -16,6 +16,12 @@ const ButtonPaginate = styled.button`
     background-color: transparent;
     font-size: 2rem;
     border-radius: 2px;
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        min-width: 3rem;
+        margin: 0 0.7rem;
+        font-size: 1.5rem;
+    }
 `
 
 export const ButtonIcon = styled(ButtonPaginate)`

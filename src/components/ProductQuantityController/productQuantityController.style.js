@@ -25,6 +25,11 @@ export const ProductQuantityButton = styled.button`
             fill: #ccc;
         }
     }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        width: 27px;
+        height: 27px;
+    }
 `
 
 export const ProductQuantityInput = styled(BaseInputNumber)`
@@ -41,5 +46,10 @@ export const ProductQuantityInput = styled(BaseInputNumber)`
     &[disable] {
         border-color: rgba(0, 0, 0, 0.09);
         color: #ccc;
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        width: 40px;
+        height: 27px;
     }
 `

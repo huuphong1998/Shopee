@@ -99,7 +99,7 @@ export default function ProductDetail() {
                 <ProductDetailSkeleton />
             ) : (
                 product && (
-                    <div className="container">
+                    <div className="container container-productDetail">
                         <Helmet>
                             <title>{product.name}</title>
                         </Helmet>

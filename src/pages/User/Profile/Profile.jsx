@@ -1,7 +1,8 @@
+import AccountCircle from '@material-ui/icons/AccountCircle'
 import { unwrapResult } from '@reduxjs/toolkit'
 import ErrorMessage from 'components/ErrorMessage/ErrorMessage'
 import InputText from 'components/InputText/InputText'
-import MenuHamburger from 'components/MenuHamburger/MenuHamburger'
+import MenuHamburgerRed from 'components/MenuHamburgerRed/MenuHamburgerRed'
 import { rules } from 'constants/rules'
 import { getDate, getMonth, getYear, isExists } from 'date-fns'
 import range from 'lodash/range'
@@ -80,7 +81,7 @@ export default function Profile({ clicked, handleClick }) {
                     <S.ProfileHeaderSubtitle>{t('profile.manageAccount')}</S.ProfileHeaderSubtitle>
                 </S.ProfileHeaderItem1>
                 <S.ProfileHeaderItem2>
-                    <MenuHamburger clicked={clicked} handleClick={handleClick} />
+                    <MenuHamburgerRed clicked={clicked} handleClick={handleClick} />
                 </S.ProfileHeaderItem2>
             </S.ProfileHeader>
             <S.ProfileInfo>
@@ -219,9 +220,15 @@ export default function Profile({ clicked, handleClick }) {
                 </S.ProfileLeft>
                 <S.ProfileRight>
                     <S.AvatarUploader>
-                        <S.Avatar>
-                            <img src="https://cf.shopee.vn/file/58d680c8e4d37fa89f5401fd6443081e" alt="" />
-                        </S.Avatar>
+                        {profile._id === '60f682ac4b93c866d27f1bf0' ? (
+                            <S.Avatar>
+                                <img src="https://cf.shopee.vn/file/58d680c8e4d37fa89f5401fd6443081e" alt="" />
+                            </S.Avatar>
+                        ) : (
+                            <S.Avatar>
+                                <AccountCircle />
+                            </S.Avatar>
+                        )}
                         <S.InputFile type="file" accept=".jpg,.jpeg,.png" />
                         <S.ButtonUpload light={1}>{t('profile.selectImage')}</S.ButtonUpload>
                         <S.AvatarUploaderTextContainer>

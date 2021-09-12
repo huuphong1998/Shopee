@@ -8,7 +8,13 @@ export const Header = styled.header`
     min-width: max-content;
     background: #fff;
     border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+
     @media screen and (max-width: 991px) and (min-width: 500px) {
+        margin-bottom: 2rem;
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        position: relative;
         margin-bottom: 2rem;
     }
 `
@@ -23,6 +29,10 @@ export const SearchWrap = styled.div`
     align-items: center;
     justify-content: space-between;
     height: 10rem;
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        height: 6.2rem;
+    }
 `
 
 export const Logo = styled(Link)`
@@ -36,6 +46,13 @@ export const Logo = styled(Link)`
         cursor: pointer;
         fill: #ee4d2d;
     }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        padding-left: initial;
+        svg {
+            width: 12rem;
+        }
+    }
 `
 
 export const LogoPageName = styled.div`
@@ -47,6 +64,10 @@ export const LogoPageName = styled.div`
     line-height: 1.5;
     padding-left: 1.5rem;
     text-transform: capitalize;
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        display: none;
+    }
 `
 
 export const Form = styled.form`
@@ -57,16 +78,48 @@ export const Form = styled.form`
     height: 3.6rem;
     border-radius: 2px;
     background: #fff;
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        flex: initial;
+        height: 3rem;
+    }
 `
 
 export const Input = styled.input`
     flex-grow: 1;
     border: 0;
     padding: 0 1rem;
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        padding: 0 0.5rem;
+        max-width: 180px;
+    }
 `
 
 export const ButtonSearch = styled(Button)`
     height: unset;
     width: 8rem;
     border-radius: 0;
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        width: 4rem;
+    }
+`
+
+export const Overlay = styled.div`
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: #000;
+    opacity: 0.7;
+    visibility: visible;
+    z-index: 99;
+    transition: all 0.4s;
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        display: block;
+    }
 `

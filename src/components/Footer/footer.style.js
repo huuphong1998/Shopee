@@ -10,6 +10,7 @@ export const Footer = styled.footer`
 
     @media screen and (min-width: 320px) and (max-width: 767px) {
         min-width: initial;
+        padding: 2rem 0 3.7rem;
     }
 `
 
@@ -18,6 +19,12 @@ export const Footer1 = styled.div`
     justify-content: space-between;
     align-items: center;
     margin-bottom: 3rem;
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        display: initial;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
 `
 
 export const Language = styled.div`
@@ -31,6 +38,11 @@ export const Language = styled.div`
         &.active {
             color: #ee4d2d;
         }
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        padding: 10px 0;
+        justify-content: center;
     }
 `
 

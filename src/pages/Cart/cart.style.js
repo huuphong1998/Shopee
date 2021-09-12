@@ -15,7 +15,12 @@ export const ProductHeader = styled.div`
     margin-bottom: 12px;
     color: #888;
     padding: 0 20px;
+
     @media screen and (max-width: 991px) and (min-width: 500px) {
+        display: none;
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
         display: none;
     }
 `
@@ -25,8 +30,15 @@ export const ProductHeaderCheckbox = styled.div`
     align-items: center;
     padding: 0 12px 0 20px;
     min-width: 58px;
+
     @media screen and (max-width: 991px) and (min-width: 500px) {
         display: inline-flex;
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        display: inline-flex;
+        padding: 0px 10px 0 10px;
+        min-width: 40px;
     }
 `
 
@@ -40,8 +52,14 @@ export const ProductHeaderUnitPrice = styled.div`
     align-items: center;
     justify-content: center;
     width: 12%;
+
     @media screen and (max-width: 991px) and (min-width: 500px) {
         width: 75%;
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        width: 75%;
+        padding-top: 10px;
     }
 `
 
@@ -50,8 +68,14 @@ export const ProductHeaderQuantity = styled.div`
     align-items: center;
     justify-content: center;
     width: 20%;
+
     @media screen and (max-width: 991px) and (min-width: 500px) {
         width: 71%;
+        padding: 15px 0;
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        width: 65%;
         padding: 15px 0;
     }
 `
@@ -68,7 +92,12 @@ export const ProductHeaderAction = styled.div`
     align-items: center;
     justify-content: center;
     width: 10%;
+
     @media screen and (max-width: 991px) and (min-width: 500px) {
+        display: none;
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
         display: none;
     }
 `
@@ -79,8 +108,13 @@ export const ProductSection = styled.div`
     border-radius: 3px;
     background: #fff;
     margin-bottom: 2.5rem;
+
     @media screen and (max-width: 991px) and (min-width: 500px) {
         padding: 10px;
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        padding: 0px;
     }
 `
 
@@ -90,8 +124,15 @@ export const CartItem = styled.div`
     border-radius: 2px;
     border: 1px solid rgba(0, 0, 0, 0.09);
     margin-bottom: 2.2rem;
+
     @media screen and (max-width: 991px) and (min-width: 500px) {
         display: inherit;
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        display: inherit;
+        padding: 1rem 0;
+        margin-bottom: 1.5rem;
     }
 `
 
@@ -99,9 +140,15 @@ export const CartItemCheckbox = styled(ProductHeaderCheckbox)``
 
 export const CartItemOverview = styled(ProductHeaderName)`
     display: flex;
+
     @media screen and (max-width: 991px) and (min-width: 500px) {
         display: inline-flex;
         width: calc(100% - 115px);
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        display: inline-flex;
+        width: calc(100% - 75px);
     }
 `
 export const CartItemEdit = styled.div`
@@ -110,7 +157,12 @@ export const CartItemEdit = styled.div`
     &:hover {
         color: #0a58ca;
     }
+
     @media screen and (max-width: 991px) and (min-width: 500px) {
+        display: inline-flex;
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
         display: inline-flex;
     }
 `
@@ -174,7 +226,14 @@ export const CartItemUnitPrice = styled(ProductHeaderUnitPrice)`
         text-decoration: line-through;
         margin-right: 1rem;
     }
+
     @media screen and (max-width: 991px) and (min-width: 500px) {
+        span:nth-child(1) {
+            display: block;
+        }
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
         span:nth-child(1) {
             display: block;
         }
@@ -187,7 +246,14 @@ export const CartItemQuantity = styled(ProductHeaderQuantity)`
         margin-right: 10px;
         display: none;
     }
+
     @media screen and (max-width: 991px) and (min-width: 500px) {
+        span:nth-child(1) {
+            display: block;
+        }
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
         span:nth-child(1) {
             display: block;
         }
@@ -205,10 +271,18 @@ export const CartItemTotalPrice = styled(ProductHeaderUnitPrice)`
         text-align: right;
         color: #ee4d2d;
     }
+
     @media screen and (max-width: 991px) and (min-width: 500px) {
         span:nth-child(1) {
             display: block;
             margin-left: -87px;
+        }
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        span:nth-child(1) {
+            display: block;
+            margin-left: -80px;
         }
     }
 `
@@ -244,7 +318,13 @@ export const CartFooter = styled.div`
         height: 1rem;
         width: 100%;
     }
+
     @media screen and (max-width: 991px) and (min-width: 500px) {
+        font-size: 1.3rem;
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        display: inherit;
         font-size: 1.3rem;
     }
 `
@@ -267,7 +347,13 @@ export const CartFooterSpaceBetween = styled.div`
 
 export const CartFooterPrice = styled.div`
     margin-left: 1rem;
+
     @media screen and (max-width: 991px) and (min-width: 500px) {
+        margin-right: 3rem;
+        margin-left: 2rem;
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
         margin-right: 3rem;
         margin-left: 2rem;
     }
@@ -287,6 +373,15 @@ export const CartFooterPriceTop = styled.div`
             color: #ee4d2d;
         }
     }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        margin-bottom: initial;
+        div {
+            :last-child {
+                font-size: 2rem;
+            }
+        }
+    }
 `
 
 export const CartFooterPriceBot = styled.div`
@@ -302,6 +397,10 @@ export const CartFooterPriceBot = styled.div`
             color: #ee4d2d;
         }
     }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        justify-content: flex-start;
+    }
 `
 
 export const CartFooterCheckout = styled(Button)`
@@ -311,7 +410,14 @@ export const CartFooterCheckout = styled(Button)`
     width: 21rem;
     font-weight: 300;
     margin: 0 2rem;
+
     @media screen and (max-width: 991px) and (min-width: 500px) {
         width: 16rem;
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        width: 12rem;
+        height: 3rem;
+        margin: 0 23rem;
     }
 `

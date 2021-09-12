@@ -22,6 +22,13 @@ export const Banner = styled.div`
         width: 68rem;
         height: 42rem;
     }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        background-image: initial;
+        width: initial;
+        height: 40rem;
+        justify-content: center;
+    }
 `
 
 export const FormWrapper = styled.div`

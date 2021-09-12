@@ -1,4 +1,4 @@
-import { LinearProgress } from '@material-ui/core'
+import { LinearProgress, makeStyles } from '@material-ui/core'
 import { unwrapResult } from '@reduxjs/toolkit'
 import { Button } from 'assets/styles/utils'
 import ErrorMessage from 'components/ErrorMessage/ErrorMessage'
@@ -15,7 +15,17 @@ import { useDispatch } from 'react-redux'
 import { Link, useHistory } from 'react-router-dom'
 import * as S from './register.style'
 
+const useStyles = makeStyles({
+    linearProgress: {
+        width: '300px',
+        left: '-20px',
+        borderRadius: '5px'
+    }
+})
+
 export default function Register() {
+    const classes = useStyles()
+
     const dispatch = useDispatch()
     const history = useHistory()
 
@@ -64,7 +74,7 @@ export default function Register() {
             </Helmet>
             <S.Banner>
                 <S.FormWrapper>
-                    {isSubmitting && <LinearProgress />}
+                    {isSubmitting && <LinearProgress className={classes.linearProgress} />}
                     <S.FormTitle>{t('register.register')}</S.FormTitle>
                     <S.Form onSubmit={handleSubmit(handleSubmitRegister)} noValidate>
                         <S.FormControl>

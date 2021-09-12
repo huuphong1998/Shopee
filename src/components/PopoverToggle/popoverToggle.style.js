@@ -4,12 +4,13 @@ import styled from 'styled-components'
 
 export const Drawer = styled.div`
     top: 0;
+    left: 0;
     position: absolute;
     will-change: transform;
     opacity: 1;
     z-index: 400;
-    right: ${({ clicked }) => (clicked ? '0' : '-100%')};
-    transition: right 0.5s ease;
+    transform: ${({ clicked }) => (clicked ? 'translateX(0)' : 'translateX(-100%)')};
+    transition: transform 0.5s ease;
     display: none;
 
     @media screen and (min-width: 320px) and (max-width: 767px) {

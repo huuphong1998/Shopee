@@ -50,7 +50,7 @@ export const SortByOptionsOption = styled.div`
 
     @media screen and (min-width: 320px) and (max-width: 767px) {
         height: 5.25rem;
-        width: 50px;
+        width: 57px;
         text-align: center;
         padding: 0 0.5rem;
     }
@@ -76,6 +76,10 @@ export const SortByPrice = styled.select`
 export const MiniPageController = styled.div`
     display: flex;
     align-items: center;
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        display: none;
+    }
 `
 
 export const MiniPageControllerState = styled.div`

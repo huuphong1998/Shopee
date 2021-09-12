@@ -1,3 +1,4 @@
+import AccountCircle from '@material-ui/icons/AccountCircle'
 import MenuHamburger from 'components/MenuHamburger/MenuHamburger'
 import Popover from 'components/Popover/Popover'
 import PopoverToggle from 'components/PopoverToggle/PopoverToggle'
@@ -13,15 +14,17 @@ import * as S from './navbar.style'
 
 NavBar.propTypes = {
     clicked: PropTypes.bool,
-    handleClick: PropTypes.func
+    handleClick: PropTypes.func,
+    handleClickCart: PropTypes.func
 }
 
-export default function NavBar({ clicked, handleClick }) {
+export default function NavBar({ clicked, handleClick, handleClickCart }) {
     const dispatch = useDispatch()
 
     const authenticated = useAuthenticated()
     const profile = useSelector(state => state.user.profile)
     const { activePopover, showPopover, hidePopover } = usePopover()
+    const purchases = useSelector(state => state.cart.purchases)
 
     const handleLogoutClick = () => {
         handleClick()
@@ -44,14 +47,15 @@ export default function NavBar({ clicked, handleClick }) {
             </PopoverToggle>
             <S.Navbar>
                 <S.NavMenu>
-                    <S.MenuHamburger>
-                        <MenuHamburger clicked={clicked} handleClick={handleClick} />
-                    </S.MenuHamburger>
                     <S.Auth>
                         {authenticated && (
                             <li>
                                 <S.User onMouseEnter={showPopover} onMouseLeave={hidePopover}>
-                                    <S.UserImage src="https://www.cfdtraining.vn/uploads/thumbnails/CFDtraining-47_1602773160-thumbnail-1-48x48.jpg" />
+                                    {profile._id === '60f682ac4b93c866d27f1bf0' ? (
+                                        <S.UserImage src="https://www.cfdtraining.vn/uploads/thumbnails/CFDtraining-47_1602773160-thumbnail-1-48x48.jpg" />
+                                    ) : (
+                                        <AccountCircle />
+                                    )}
                                     <S.UserName>{profile.name || profile.email}</S.UserName>
                                     <Popover active={activePopover}>
                                         <S.UserLink to={path.user}>{t('navBar.account')}</S.UserLink>
@@ -73,6 +77,29 @@ export default function NavBar({ clicked, handleClick }) {
                             </Fragment>
                         )}
                     </S.Auth>
+                    <S.WrapIcon>
+                        <S.CartIcon onClick={handleClickCart}>
+                            <svg
+                                viewBox="0 0 26.6 25.6"
+                                className="shopee-svg-icon navbar__link-icon icon-shopping-cart-2"
+                            >
+                                <polyline
+                                    fill="none"
+                                    points="2 1.7 5.5 1.7 9.6 18.3 21.2 18.3 24.6 6.1 7 6.1"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeMiterlimit={10}
+                                    strokeWidth="2.5"
+                                />
+                                <circle cx="10.7" cy={23} r="2.2" stroke="none" />
+                                <circle cx="19.7" cy={23} r="2.2" stroke="none" />
+                            </svg>
+                            {purchases.length > 0 && <S.CartNumberBadge>{purchases.length}</S.CartNumberBadge>}
+                        </S.CartIcon>
+                        <S.MenuHamburger>
+                            <MenuHamburger clicked={clicked} handleClick={handleClick} />
+                        </S.MenuHamburger>
+                    </S.WrapIcon>
                 </S.NavMenu>
             </S.Navbar>
             {clicked && <S.Overlay />}

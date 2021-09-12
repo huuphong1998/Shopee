@@ -1,6 +1,6 @@
+import PropTypes from 'prop-types'
 import React, { Fragment } from 'react'
 import * as S from './popoverCart.style'
-import PropTypes from 'prop-types'
 
 export default function PopoverCart({ children, clickCart }) {
     return (

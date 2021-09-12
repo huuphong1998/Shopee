@@ -5,7 +5,7 @@ import React from 'react'
 
 export default function ProductDetailSkeleton() {
     return (
-        <div className="container">
+        <div className="container container-productDetail">
             <S.ProductBriefing>
                 <S.ProductImages>
                     <S.ProductImageActive>

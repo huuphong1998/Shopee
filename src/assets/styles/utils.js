@@ -57,4 +57,8 @@ export const ButtonLink = styled(Link)`
       `
         }
     }}
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        padding: 1px 4px;
+    }
 `

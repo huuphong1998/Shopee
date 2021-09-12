@@ -1,3 +1,4 @@
+import AccountCircle from '@material-ui/icons/AccountCircle'
 import Overlay from 'components/Overlay/Overlay'
 import { path } from 'constants/path'
 import Password from 'pages/User/Password/Password'
@@ -14,6 +15,8 @@ export default function User() {
     const [clicked, setClicked] = useState(false)
 
     const userName = name => {
+        if (!name) return
+
         const nameArray = name.split(' ')
         for (let i = 0; i < nameArray.length; i++) {
             if (nameArray.length > 2) {
@@ -32,17 +35,21 @@ export default function User() {
 
     return (
         <div>
-            <S.Container className="container">
+            <S.Container className="container container-header">
                 <S.Sidebar clicked={clicked}>
                     <S.Brief>
                         <S.BriefAvatar to={path.profile}>
-                            <img
-                                src="https://www.cfdtraining.vn/uploads/thumbnails/CFDtraining-47_1602773160-thumbnail-1-48x48.jpg"
-                                alt=""
-                            />
+                            {profile._id === '60f682ac4b93c866d27f1bf0' ? (
+                                <img
+                                    src="https://www.cfdtraining.vn/uploads/thumbnails/CFDtraining-47_1602773160-thumbnail-1-48x48.jpg"
+                                    alt=""
+                                />
+                            ) : (
+                                <AccountCircle />
+                            )}
                         </S.BriefAvatar>
                         <S.BriefRight>
-                            <S.BriefUsername>{userName(profile.name)}</S.BriefUsername>
+                            <S.BriefUsername>{userName(profile.name) || profile.email}</S.BriefUsername>
                             <S.BriefEdit to={path.profile}>
                                 <svg
                                     width={12}

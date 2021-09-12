@@ -20,10 +20,6 @@ export const SearchWrap = styled.div`
     display: flex;
     align-items: center;
     padding-bottom: 1rem;
-
-    @media screen and (min-width: 320px) and (max-width: 767px) {
-        padding-top: 0.5rem;
-    }
 `
 
 export const Logo = styled(Link)`
@@ -41,9 +37,9 @@ export const Logo = styled(Link)`
     }
 
     @media screen and (min-width: 320px) and (max-width: 767px) {
-        margin-right: 1rem;
+        margin-right: 0.5rem;
         svg {
-            width: 120px;
+            width: 108px;
         }
     }
 `
@@ -58,7 +54,7 @@ export const StyledForm = styled.form`
     height: 4rem;
 
     @media screen and (min-width: 320px) and (max-width: 767px) {
-        height: 3.2rem;
+        height: 3rem;
         flex-grow: initial;
     }
 `
@@ -83,8 +79,8 @@ export const StyledButton = styled(Button)`
     }
 
     @media screen and (min-width: 320px) and (max-width: 767px) {
-        padding-left: 15px;
-        padding-right: 15px;
+        padding-left: 10px;
+        padding-right: 10px;
     }
 `
 
@@ -95,7 +91,7 @@ export const Cart = styled.div`
     margin: auto 5rem;
 
     @media screen and (min-width: 320px) and (max-width: 767px) {
-        margin: auto 1.5rem;
+        display: none;
     }
 `
 
@@ -145,8 +141,30 @@ export const PopoverContent = styled.div`
 
 export const PopoverTitle = styled.div`
     padding: 1.5rem 0 2rem 1rem;
-    color: rbga(0, 0, 0, 0.26);
     text-transform: capitalize;
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        display: flex;
+        justify-content: space-between;
+    }
+`
+
+export const AddProduct = styled.div`
+    color: rgba(0, 0, 0, 0.26);
+`
+export const Close = styled.div`
+    display: none;
+    padding-right: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    &:hover {
+        color: blue;
+        transition: all 0.3s ease;
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        display: block;
+    }
 `
 
 export const MiniProductCart = styled.div`

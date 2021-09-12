@@ -1,6 +1,6 @@
 import { unwrapResult } from '@reduxjs/toolkit'
 import PurchaseSkeleton from 'components/Skeleton/PurchaseSkeleton'
-import MenuHamburger from 'components/MenuHamburger/MenuHamburger'
+import MenuHamburgerRed from 'components/MenuHamburgerRed/MenuHamburgerRed'
 import { path } from 'constants/path'
 import { purchaseStatus } from 'constants/status'
 import useQuery from 'hooks/useQuery'
@@ -94,7 +94,7 @@ export default function Purchase({ clicked, handleClick }) {
                     {t('purchase.cancelled')}
                 </S.PurchaseTabItem>
                 <S.PurchaseTabItemMenu>
-                    <MenuHamburger clicked={clicked} handleClick={handleClick} />
+                    <MenuHamburgerRed clicked={clicked} handleClick={handleClick} />
                 </S.PurchaseTabItemMenu>
             </S.PurchaseTabs>
             <S.PurchaseList>

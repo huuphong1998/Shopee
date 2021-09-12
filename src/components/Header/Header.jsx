@@ -49,10 +49,13 @@ export default function Header() {
     return (
         <S.StyledHeader>
             <div className="container container-header">
-                <NavBar clicked={clicked} handleClick={handleClick} />
+                <NavBar clicked={clicked} handleClick={handleClick} handleClickCart={handleClickCart} />
                 <PopoverCart clickCart={clickCart}>
                     <S.PopoverContent>
-                        <S.PopoverTitle>{t('header.addProducts')}</S.PopoverTitle>
+                        <S.PopoverTitle>
+                            <S.AddProduct>{t('header.addProducts')}</S.AddProduct>
+                            <S.Close onClick={handleClickCart}>x</S.Close>
+                        </S.PopoverTitle>
                         {purchases.slice(0, 5).map(purchase => (
                             <S.MiniProductCart key={purchase._id}>
                                 <S.MiniProductCartImg src={purchase.product.image} />
@@ -121,7 +124,7 @@ export default function Header() {
                     </S.StyledForm>
                     <S.Cart onMouseEnter={showPopover} onMouseLeave={hidePopover}>
                         <S.CartContainer>
-                            <S.CartIcon to="" onClick={handleClickCart}>
+                            <S.CartIcon to="">
                                 <svg
                                     viewBox="0 0 26.6 25.6"
                                     className="shopee-svg-icon navbar__link-icon icon-shopping-cart-2"

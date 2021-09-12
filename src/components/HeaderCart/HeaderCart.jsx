@@ -7,6 +7,7 @@ import * as S from './headerCart.style'
 
 export default function HeaderCart() {
     const [searchValue, setSearchValue] = useState('')
+    const [clicked, setClicked] = useState(false)
     const history = useHistory()
 
     const search = event => {
@@ -21,14 +22,18 @@ export default function HeaderCart() {
 
     const { t } = useTranslation()
 
+    const handleClick = () => {
+        setClicked(!clicked)
+    }
+
     return (
         <S.Header>
             <S.Navbar>
-                <div className="container">
-                    <NavBar />
+                <div className="container container-header">
+                    <NavBar clicked={clicked} handleClick={handleClick} />
                 </div>
             </S.Navbar>
-            <div className="container">
+            <div className="container container-header">
                 <S.SearchWrap>
                     <S.Logo to="">
                         <svg
@@ -83,6 +88,7 @@ export default function HeaderCart() {
                     </S.Form>
                 </S.SearchWrap>
             </div>
+            {clicked && <S.Overlay />}
         </S.Header>
     )
 }

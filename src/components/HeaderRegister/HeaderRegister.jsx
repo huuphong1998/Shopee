@@ -9,7 +9,7 @@ export default function HeaderRegister({ title }) {
 
     return (
         <H.Header>
-            <H.Container className="container">
+            <H.Container className="container container-header">
                 <H.HeaderBrand>
                     <H.HeaderIcon to="">
                         <svg

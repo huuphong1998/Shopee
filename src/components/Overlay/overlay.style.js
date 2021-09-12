@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Overlay = styled.div`
-    display: block;
+    display: none;
     top: 0;
     left: 0;
     width: 100vw;
@@ -12,4 +12,12 @@ export const Overlay = styled.div`
     visibility: visible;
     z-index: 99;
     transition: all 0.4s;
+
+    @media screen and (max-width: 991px) and (min-width: 500px) {
+        display: block;
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        display: block;
+    }
 `

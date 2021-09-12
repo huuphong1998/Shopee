@@ -23,7 +23,6 @@ export const NavMenu = styled.ul`
 `
 export const MenuHamburger = styled.div`
     display: none;
-    margin-left: -20px;
 
     @media screen and (min-width: 320px) and (max-width: 767px) {
         display: block;
@@ -33,12 +32,54 @@ export const Auth = styled.div`
     display: flex;
     width: 100%;
     justify-content: flex-end;
+    position: relative;
 
     @media screen and (min-width: 320px) and (max-width: 767px) {
         width: initial;
     }
 `
+export const WrapIcon = styled.div`
+    display: none;
 
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        display: flex;
+    }
+`
+export const CartIcon = styled(Link)`
+    padding: 10px;
+    display: inline-block;
+    position: relative;
+    svg {
+        color: #fff;
+        stroke: #fff;
+        fill: currentColor;
+        width: 26px;
+        height: 26px;
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        padding: initial;
+    }
+`
+export const CartNumberBadge = styled.div`
+    position: absolute;
+    border-radius: 4rem;
+    min-width: 11px;
+    padding: 0px 5px;
+    text-align: center;
+    border: 2px solid #ee4d2d;
+    color: #ee4d2d;
+    background-color: #fff;
+    line-height: 1;
+    top: 2px;
+    right: 2px;
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        padding: 0px 4px;
+        top: -7px;
+        right: -10px;
+    }
+`
 export const NavLink = styled(Link)`
     color: #fff;
     margin-left: 1rem;
@@ -59,6 +100,10 @@ export const User = styled.div`
     ${Drawer} {
         width: 15rem;
         top: 135%;
+    }
+    svg {
+        width: 2rem;
+        height: 2rem;
     }
 
     @media screen and (min-width: 320px) and (max-width: 767px) {
@@ -93,8 +138,7 @@ export const UserLink = styled(Link)`
     }
 
     @media screen and (min-width: 320px) and (max-width: 767px) {
-        padding: 1rem 1rem 1rem 1rem;
-    }
+        padding: 1rem;
 `
 
 export const UserButton = styled.button`
@@ -111,12 +155,12 @@ export const UserButton = styled.button`
     }
 
     @media screen and (min-width: 320px) and (max-width: 767px) {
-        padding: 1rem 1rem 1rem 1rem;
+        padding: 1rem;
     }
 `
 
 export const Overlay = styled.div`
-    display: block;
+    display: none;
     top: 0;
     left: 0;
     width: 100%;
@@ -127,4 +171,8 @@ export const Overlay = styled.div`
     visibility: visible;
     z-index: 99;
     transition: all 0.4s;
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        display: block;
+    }
 `

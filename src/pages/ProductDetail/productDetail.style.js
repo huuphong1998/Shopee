@@ -8,6 +8,10 @@ export const ProductBriefing = styled.div`
     @media screen and (max-width: 991px) and (min-width: 500px) {
         display: initial;
     }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        display: initial;
+    }
 `
 
 export const ProductImages = styled.div`
@@ -16,6 +20,11 @@ export const ProductImages = styled.div`
     @media screen and (max-width: 991px) and (min-width: 500px) {
         width: 100%;
         padding: 1.5rem 1.5rem 0 1.5rem;
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        width: initial;
+        padding: initial;
     }
 `
 
@@ -31,6 +40,12 @@ export const ProductImageActive = styled.div`
         height: 350px;
         background: #fff;
     }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        height: 270px;
+        background: #fff;
+        margin-top: 1rem;
+    }
 `
 
 export const Image1 = styled.img`
@@ -40,12 +55,20 @@ export const Image1 = styled.img`
     @media screen and (max-width: 991px) and (min-width: 500px) {
         display: none;
     }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        display: none;
+    }
 `
 export const Image2 = styled.img`
     max-width: 100%;
     max-height: 100%;
     display: none;
     @media screen and (max-width: 991px) and (min-width: 500px) {
+        display: block;
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
         display: block;
     }
 `
@@ -69,6 +92,10 @@ export const ProductImageSlider = styled.div`
     margin-left: -0.5rem;
     margin-right: -0.5rem;
     @media screen and (max-width: 991px) and (min-width: 500px) {
+        display: none;
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
         display: none;
     }
 `
@@ -96,6 +123,10 @@ export const ProductIconPrev = styled(ProductIconButton)`
     display: none;
     left: 0;
     @media screen and (max-width: 991px) and (min-width: 500px) {
+        display: block;
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
         display: block;
     }
 `
@@ -126,6 +157,10 @@ export const ProductIconNext = styled(ProductIconButton)`
     @media screen and (max-width: 991px) and (min-width: 500px) {
         display: block;
     }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        display: block;
+    }
 `
 
 export const ProductMeta = styled.div`
@@ -134,12 +169,20 @@ export const ProductMeta = styled.div`
     @media screen and (max-width: 991px) and (min-width: 500px) {
         padding: 0 1.5rem 1.5rem;
     }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        padding: 0 1.5rem 1.5rem;
+    }
 `
 
 export const ProductTitle = styled.h1`
     font-weight: 500;
     font-size: 2rem;
     margin-bottom: 1.5rem;
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        font-size: 1.5rem;
+    }
 `
 
 export const ProductMeta1 = styled.div`
@@ -200,6 +243,11 @@ export const ProductPrice = styled.div`
     display: flex;
     align-items: center;
     margin-bottom: 3rem;
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        padding: 0.5rem 1rem;
+        margin-bottom: 1.5rem;
+    }
 `
 
 export const ProductPriceOriginal = styled.div`
@@ -207,12 +255,20 @@ export const ProductPriceOriginal = styled.div`
     text-decoration: line-through;
     color: #929292;
     margin-right: 10px;
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        font-size: 1.2rem;
+    }
 `
 
 export const ProductPriceSale = styled.div`
     font-size: 3rem;
     font-weight: 500;
     color: #ee4d2d;
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        font-size: 2rem;
+    }
 `
 
 export const ProductPriceSalePercent = styled.div`
@@ -226,6 +282,10 @@ export const ProductPriceSalePercent = styled.div`
     line-height: 1;
     margin-left: 15px;
     white-space: nowrap;
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        font-size: 1rem;
+    }
 `
 
 export const ProductBuyQuantity = styled.div`
@@ -239,13 +299,21 @@ export const ProductBuyQuantityTitle = styled.div`
     text-transform: capitalize;
     flex: 0 0 110px;
     max-width: 110px;
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        max-width: 80px;
+    }
 `
 
 export const ProductBuyQuantityController = styled.div`
     margin-right: 1.2rem;
 `
 
-export const ProductBuyQuantityQuantity = styled.div``
+export const ProductBuyQuantityQuantity = styled.div`
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        font-size: 1.2rem;
+    }
+`
 
 export const ProductButtons = styled(Button)`
     background: rgba(255, 87, 34, 0.1);
@@ -266,6 +334,10 @@ export const ProductButtons = styled(Button)`
     &:hover {
         background: rgba(255, 87, 34, 0.15);
     }
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        height: 40px;
+    }
 `
 
 export const ProductContent = styled.div`
@@ -275,6 +347,11 @@ export const ProductContent = styled.div`
     background: #fff;
     margin-top: 3rem;
     padding: 2rem;
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        margin-top: 1rem;
+        padding: 1rem;
+    }
 `
 
 export const ProductContentHeading = styled.div`
@@ -283,10 +360,19 @@ export const ProductContentHeading = styled.div`
     font-size: 1.8rem;
     padding: 1.4rem;
     text-transform: capitalize;
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        font-size: 1.5rem;
+        padding: 1rem;
+    }
 `
 
 export const ProductContentDetail = styled.div`
     margin: 3rem 1.5rem 1.5rem;
     font-size: 1.4rem;
     line-height: 2.2;
+
+    @media screen and (min-width: 320px) and (max-width: 767px) {
+        margin: 2rem 1.5rem 1.5rem;
+    }
 `
