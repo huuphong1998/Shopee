@@ -25,11 +25,11 @@ export const ScrollToTop = styled.div`
     }
 
     @media screen and (min-width: 320px) and (max-width: 767px) {
-        bottom: 0.5rem;
-        right: 0.5rem;
+        bottom: 1rem;
+        right: 1rem;
         svg {
-            width: 20px;
-            height: 20px;
+            width: 30px;
+            height: 30px;
         }
     }
 `
